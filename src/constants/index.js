@@ -16,7 +16,7 @@ import {
   git,
   figma,
   docker,
-  meta,
+  payshia,
   starbucks,
   tesla,
   shopify,
@@ -156,18 +156,20 @@ export const education = [
 
 const experiences = [
   {
-    title: "React.js Developer",
-    company_name: "................................................................",
-    icon: starbucks,
-    iconBg: "#383E6",
-    date: "March 2### - April 2###",
+    title: "intern Software Enginner",
+    company_name: "Payshia Software Solutions(pvt) Ltd",
+    icon: payshia,
+    iconBg: "#383E56",
+    date: "March 2024 - Present",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Developing and maintaining responsive web applications using React.js, JavaScript, and modern frontend technologies.",
+      "Collaborating with UI/UX designers and backend developers to create seamless user experiences.",
+      "Implementing state management solutions using Redux and Context API for complex applications.",
+      "Optimizing application performance and ensuring cross-browser compatibility.",
+      "Participating in agile development processes and code review sessions.",
     ],
   },
+
 ];
 
 const testimonials = [
