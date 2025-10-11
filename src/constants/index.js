@@ -20,23 +20,20 @@ import {
   starbucks,
   tesla,
   shopify,
- 
   back,
   font,
   whetherapp,
   modern,
-
-food,
-mobilemart,
-TMV,
-japura,
-dev,
-reserve,
-weblink,
-realtime,
-object,
-advance
-
+  food,
+  mobilemart,
+  TMV,
+  japura,
+  dev,
+  reserve,
+  weblink,
+  realtime,
+  object,
+  advance
 } from "../assets";
 
 export const navLinks = [
@@ -65,7 +62,7 @@ export const navLinks = [
 
 const services = [
   {
-    title: "java Developer",
+    title: "Java Developer",
     icon: web,
   },
   {
@@ -76,21 +73,17 @@ const services = [
     title: "Backend Developer",
     icon: back,
   },
- 
   {
-    title: "Swift Ui Developer",
+    title: "SwiftUI Developer",
     icon: iosdeveloper,
   },
 ];
 
 const technologies = [
-
- 
   {
     name: "JavaScript",
     icon: javascript,
   },
-
   {
     name: "React JS",
     icon: reactjs,
@@ -107,69 +100,64 @@ const technologies = [
     name: "MongoDB",
     icon: mongodb,
   },
-
   {
-    name: "git",
+    name: "Git",
     icon: git,
   },
-
 ];
 export const education = [
   {
     date: "2018-2020",
-    degree: "A/L Engineering Technology Steam ",
-    institution_name: "A/Thalawa National School ",
-    icon:TMV,
+    degree: "A/L Engineering Technology Steam",
+    institution_name: "A/Thalawa National School",
+    icon: TMV,
     iconBg: "#ffffff",
     points: [
-      "Engineering Technology ",
-      "Science for Technology ",
-      "Information  & Communication Technology",
+      "Engineering Technology",
+      "Science for Technology",
+      "Information & Communication Technology",
     ],
-   
   },
   {
-    date: "2023-2024 ",
-    degree: "Master programme diploma",
-    institution_name: "Developer Stack Acedamy",
+    date: "2023-2024",
+    degree: "Master Programme Diploma",
+    institution_name: "Developer Stack Academy",
     icon: dev,
     iconBg: "#ffffff",
     points: [
-      "developed java and java-fx project",
-      "react , javascript and node js learned",
-      "developed inonic mobile applications and back end with  firebase",
+      "Developed Java and JavaFX projects",
+      "Learned React, JavaScript and Node.js",
+      "Developed Ionic mobile applications with Firebase backend",
     ],
   },
   {
-    date: "2021 - 2025",
-    degree: "Bachelor of Information and Communication Tech. Honors(Specialized in Software)",
-    institution_name: "Faculty Of Technology,University of Sri jayawardhenepura",
+    date: "2021-2025",
+    degree: "Bachelor of Information and Communication Tech. Honors (Specialized in Software)",
+    institution_name: "Faculty Of Technology, University of Sri Jayewardenepura",
     icon: japura,
     iconBg: "#ffffff",
     points: [
-      
-      "Member of ICTS at Faculty Of Technology.",
-      "Member of Astronomy club at University of Sri jayawardhenepura",
+      "Member of ICTS at Faculty Of Technology",
+      "Member of Astronomy club at University of Sri Jayewardenepura",
     ],
   },
 ];
 
 const experiences = [
   {
-    title: "intern Software Engineer",
-    company_name: "Payshia Software Solutions(pvt)Ltd",
+    title: "Intern Software Engineer",
+    company_name: "Payshia Software Solutions (Pvt) Ltd",
     icon: payshia,
     iconBg: "#383E56",
     date: "March 2024 - Present",
     points: [
-      "Developing and maintaining responsive web applications using React.js, JavaScript, and modern frontend technologies.",
-      "Collaborating with UI/UX designers and backend developers to create seamless user experiences.",
-      "Implementing state management solutions using Redux and Context API for complex applications.",
-      "Optimizing application performance and ensuring cross-browser compatibility.",
-      "Participating in agile development processes and code review sessions.",
+      "Developing and maintaining responsive web applications using React.js, JavaScript, and modern frontend technologies",
+      "Collaborating with UI/UX designers and backend developers to create seamless user experiences",
+      "Implementing state management solutions using Redux and Context API for complex applications",
+      "Optimizing application performance and ensuring cross-browser compatibility",
+      "Participating in agile development processes and code review sessions",
     ],
   },
-
 ];
 
 const testimonials = [
@@ -210,69 +198,63 @@ const testimonials = [
 
 const projects = [
   {
-    name: "Food Order-App",
+    name: "Food Order App",
     points: [
-      "ionic mobile App ",
-      "used firebase storage for uploading  image and retrive",
-      "used firebase database for seving email and password",
+      "Ionic mobile application",
+      "Used Firebase storage for uploading and retrieving images",
+      "Used Firebase database for storing email and password authentication",
     ],
-
     tags: [
       {
-        name: "Anguler",
+        name: "Angular",
         color: "blue-text-gradient",
       },
       {
-        name: "fire-base",
+        name: "Firebase",
         color: "green-text-gradient",
       },
       {
-        name: "css,scss",
+        name: "CSS, SCSS",
         color: "pink-text-gradient",
       },
     ],
-  
     image: food,
     source_code_link: "https://github.com/Sandalu01/Food-Order-App",
   },
   {
-    name: "Object Detection ",
+    name: "Object Detection",
     points: [
-      "when we open the web camera of the devices",
-      "when insert vidoes object detected",
-      "The model identify the which types of objects of the pictures",
+      "Real-time object detection using web camera",
+      "Video-based object detection and classification",
+      "AI model identifies different types of objects in images",
     ],
-   
     tags: [
       {
-        name: "Jupyter Notebook,google collabse",
+        name: "Jupyter Notebook, Google Colab",
         color: "blue-text-gradient"
       },
       {
-        name: "python,cocoma model",
+        name: "Python, COCO Model",
         color: "green-text-gradient",
       },
       {
-        name: "COCO dataset",
+        name: "COCO Dataset",
         color: "pink-text-gradient",
       },
     ],
-
     image: object, 
     source_code_link: "https://github.com/Sandalu-Xe/Object-detection",
   },
   {
-    name: "Apple Frameworks ",
+    name: "Apple Frameworks",
     points: [
-      "Developed using SwiftUI.",
-      "Displays current weather conditions and forecasts.",
-      "The model identify the which types of objects of the pictures.",
+      "Developed using SwiftUI",
+      "Displays current weather conditions and forecasts",
+      "Interactive weather application with modern UI design",
     ],
-
-
     tags: [
       {
-        name: "SpriteKit..",
+        name: "SpriteKit",
         color: "blue-text-gradient",
       },
       {
@@ -284,26 +266,24 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-   
     image: modern,
     source_code_link: "https://github.com/Sandalu01/Apple-Framework",
   },
   {
-    name: "Advanced Authentication in react ",
+    name: "Advanced Authentication in React",
     points: [
-      "Sending Verify Account Email,Verify Email Endpoint",
-      "Building a Welcome Email Template",
-      "Forgot Password Endpoint",
-      "Reset Password Endpoint.",
+      "Email verification system with secure endpoints",
+      "Welcome email templates and automated responses",
+      "Forgot password and reset password functionality",
+      "Secure authentication flow with JWT tokens",
     ],
-
     tags: [
       {
-        name: "React,Express",
+        name: "React, Express",
         color: "blue-text-gradient",
       },
       {
-        name: "mailtrap,Tailwind css",
+        name: "Mailtrap, Tailwind CSS",
         color: "green-text-gradient",
       },
       {
@@ -311,20 +291,17 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-  
     image: advance,
     source_code_link: "https://github.com/Sandalu-Xe/Advanced-Auth",
   },
   
   {
     name: "Weather App",
-
     points: [
-      "Developed using SwiftUI.",
-      "5-Day Forecast: Shows the weather forecast for the next five days.",
-      "Day/Night Mode: Automatically switches between day and night modes based on the time of day",
+      "Developed using SwiftUI",
+      "5-day weather forecast with detailed information",
+      "Automatic day/night mode switching based on time",
     ],
-
     tags: [
       {
         name: "SwiftUI",
@@ -339,8 +316,6 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-
-
     image: whetherapp,
     source_code_link: "https://github.com/Sandalu01/Weather-App",
   },
@@ -348,59 +323,55 @@ const projects = [
 
 const teamworks = [
   {
-    name: "Reserve Tt",
-   
+    name: "Reserve TT",
     tags: [
       {
-        name: "next js",
+        name: "Next.js",
         color: "blue-text-gradient",
       },
       {
-        name: "Mongo DB",
+        name: "MongoDB",
         color: "green-text-gradient",
       },
       {
-        name: "Tailwind css,Aws",
+        name: "Tailwind CSS, AWS",
         color: "pink-text-gradient",
       },
     ],
-    pointss: [
-      "Created a sleek and intuitive user interface.",
-      "Integrated API for real-time weather updates.",
-      "Enhanced performance for a smooth user experience.",
+    points: [
+      "Created a sleek and intuitive user interface",
+      "Integrated API for real-time classroom booking updates",
+      "Enhanced performance for a smooth user experience",
     ],
     image: reserve,
     source_code_link: "https://github.com/RavanaDevs/classroom-booking-system",
-    webpage : "https://classroom-booking-system-dev.vercel.app/",
+    webpage: "https://classroom-booking-system-dev.vercel.app/",
   },
 
   {
     name: "Real-Time Train Monitoring System",
-  
-
     tags: [
       {
-        name: "GPS,ESP32,keypad,Node Mcu,Lcd Dispaly",
+        name: "GPS, ESP32, Keypad, Node MCU, LCD Display",
         color: "blue-text-gradient",
       },
       {
-        name: "Mongo-DB ,Linode",
+        name: "MongoDB, Linode",
         color: "green-text-gradient",
       },
       {
-        name: "React-boostrap,tailwind css,Ract,NodeJS",
+        name: "React Bootstrap, Tailwind CSS, React, Node.js",
         color: "pink-text-gradient",
       },
     ],
-    pointss: [
-      
-      "Created a sleek and intuitive user interface.",
-      "Integrated API for real-time weather updates.",
-      "Enhanced performance for a smooth user experience.",
+    points: [
+      "Created a sleek and intuitive user interface",
+      "Integrated API for real-time train tracking updates",
+      "Enhanced performance for a smooth user experience",
     ],
     image: realtime,
     source_code_link: "https://github.com/Ravana-ac",
-    webpage : "https://train-tracking-system-tau.vercel.app/",
+    webpage: "https://train-tracking-system-tau.vercel.app/",
   },
 ];
 

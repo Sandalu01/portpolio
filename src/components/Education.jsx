@@ -104,7 +104,7 @@ const EducationCard = memo(({ education, index }) => {
           transition={{ delay: 0.3 * index, duration: 0.8 }}
           viewport={{ once: true, margin: "-100px" }}
         >
-          {education.points?.slice(0, window.innerWidth < 768 ? 3 : 4).map((point, pointIndex) => (
+          {education.points?.slice(0, 4).map((point, pointIndex) => (
             <motion.li
               key={`education-point-${pointIndex}`}
               className="text-gray-100 text-sm sm:text-base leading-relaxed flex items-start gap-4 group hover:text-white transition-all duration-300"
@@ -130,9 +130,9 @@ const EducationCard = memo(({ education, index }) => {
           ))}
           
           {/* Show more indicator */}
-          {education.points?.length > (window.innerWidth < 768 ? 3 : 4) && (
+          {education.points?.length > 4 && (
             <li className="text-gray-400 text-sm italic ml-7 backdrop-blur-sm bg-white/5 rounded-full px-3 py-1 w-fit">
-              +{education.points.length - (window.innerWidth < 768 ? 3 : 4)} more achievements...
+              +{education.points.length - 4} more achievements...
             </li>
           )}
         </motion.ul>

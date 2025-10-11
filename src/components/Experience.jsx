@@ -114,7 +114,7 @@ const ExperienceCard = memo(({ experience, index }) => {
           transition={{ delay: 0.3 * index, duration: 0.8 }}
           viewport={{ once: true, margin: "-100px" }}
         >
-          {experience.points?.slice(0, window.innerWidth < 768 ? 3 : 4).map((point, pointIndex) => (
+          {experience.points?.slice(0, 4).map((point, pointIndex) => (
             <motion.li
               key={`experience-point-${pointIndex}`}
               className="text-gray-100 text-sm sm:text-base lg:text-lg leading-relaxed flex items-start gap-4 group hover:text-white transition-all duration-300"
@@ -140,9 +140,9 @@ const ExperienceCard = memo(({ experience, index }) => {
           ))}
           
           {/* Show more indicator */}
-          {experience.points?.length > (window.innerWidth < 768 ? 3 : 4) && (
+          {experience.points?.length > 4 && (
             <li className="text-gray-400 text-sm italic ml-8 bg-white/5 backdrop-blur-sm rounded-full px-4 py-2 w-fit border border-white/10">
-              +{experience.points.length - (window.innerWidth < 768 ? 3 : 4)} more achievements...
+              +{experience.points.length - 4} more achievements...
             </li>
           )}
         </motion.ul>
