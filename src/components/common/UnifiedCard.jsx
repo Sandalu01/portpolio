@@ -5,7 +5,7 @@ import { github, weblink } from "../../assets";
 import { fadeIn } from "../../utils/motion";
 import { styles } from "../../styles";
 
-// Unified Card component that handles all card types with mobile optimization
+// Unified Card component with modern liquid glass design
 const UnifiedCard = memo(({
   index = 0,
   type = "project", // "project", "service", "teamwork"
@@ -63,27 +63,27 @@ const UnifiedCard = memo(({
     switch (type) {
       case "service":
         return (
-          <div className={`${styles.card} h-full min-h-[280px] xs:min-h-[320px] group-hover:shadow-white/10 transition-all duration-300`}>
+          <div className={`${styles.liquidGlassFloating} h-full min-h-[280px] xs:min-h-[320px] transition-all duration-500`}>
             {/* Content container */}
             <div className="relative p-6 xs:p-8 h-full flex flex-col justify-center items-center text-center">
               {/* Number badge */}
               <div className="absolute top-4 right-4 xs:top-6 xs:right-6">
-                <div className="relative bg-white text-black rounded-full w-7 h-7 xs:w-8 xs:h-8 flex items-center justify-center font-bold text-xs xs:text-sm shadow-lg group-hover:bg-gray-100 transition-colors duration-300">
-                  <span className="relative z-10">0{index + 1}</span>
+                <div className={`${styles.liquidGlassTag} relative w-7 h-7 xs:w-8 xs:h-8 flex items-center justify-center font-bold text-xs xs:text-sm shadow-lg transition-colors duration-300`}>
+                  <span className="relative z-10 text-white">0{index + 1}</span>
                 </div>
               </div>
 
               {/* Icon container */}
               <div className="relative mb-6 xs:mb-8 group/icon">
                 <motion.div 
-                  className="relative w-16 h-16 xs:w-20 xs:h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/30 shadow-lg flex items-center justify-center group-hover:bg-white/15 group-hover:border-white/50 transition-all duration-300"
+                  className={`${styles.liquidGlassIcon} relative w-16 h-16 xs:w-20 xs:h-20 sm:w-24 sm:h-24 flex items-center justify-center transition-all duration-300`}
                   whileHover={{ rotate: 5, scale: hoverScale }}
                   transition={{ duration: 0.3 }}
                 >
                   <img
                     src={icon}
                     alt={`${title} service`}
-                    className="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 object-contain transition-all duration-300"
+                    className="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 object-contain transition-all duration-300 relative z-10"
                     loading="lazy"
                   />
                 </motion.div>
@@ -91,7 +91,7 @@ const UnifiedCard = memo(({
 
               {/* Title */}
               <motion.h3 
-                className="text-white font-bold text-lg xs:text-xl sm:text-2xl text-center leading-tight mb-3 xs:mb-4 group-hover:text-gray-100 transition-colors duration-300"
+                className="text-white font-bold text-lg xs:text-xl sm:text-2xl text-center leading-tight mb-3 xs:mb-4 group-hover:text-gray-100 transition-colors duration-300 relative z-10"
                 whileHover={{ scale: hoverScale }}
                 transition={{ duration: 0.2 }}
               >
@@ -99,20 +99,20 @@ const UnifiedCard = memo(({
               </motion.h3>
 
               {/* Accent line */}
-              <div className="w-12 xs:w-16 h-px bg-white/40 group-hover:w-20 xs:group-hover:w-24 group-hover:bg-white/60 transition-all duration-300"></div>
+              <div className="w-12 xs:w-16 h-px bg-white/40 group-hover:w-20 xs:group-hover:w-24 group-hover:bg-white/60 transition-all duration-300 relative z-10"></div>
 
-              {/* Corner accents */}
-              <div className={`absolute top-4 right-4 w-8 h-8 ${styles.cornerAccent} border-t border-r`}></div>
-              <div className={`absolute bottom-4 left-4 w-8 h-8 ${styles.cornerAccent} border-b border-l`}></div>
+              {/* Modern liquid glass accents */}
+              <div className={`absolute top-4 right-4 w-8 h-8 ${styles.cornerAccent} border-t border-r opacity-30`}></div>
+              <div className={`absolute bottom-4 left-4 w-8 h-8 ${styles.cornerAccent} border-b border-l opacity-30`}></div>
             </div>
           </div>
         );
 
       case "project":
         return (
-          <div className={`${styles.card} h-full flex flex-col overflow-hidden`}>
+          <div className={`${styles.liquidGlassCard} h-full flex flex-col overflow-hidden`}>
             {/* Image Container */}
-            <div className="relative w-full h-36 xs:h-40 sm:h-48 md:h-52 lg:h-60 overflow-hidden rounded-t-2xl flex-shrink-0">
+            <div className="relative w-full h-36 xs:h-40 sm:h-48 md:h-52 lg:h-60 overflow-hidden rounded-t-3xl flex-shrink-0">
               <img
                 src={image}
                 alt={`${title} project`}
@@ -120,7 +120,7 @@ const UnifiedCard = memo(({
                 loading="lazy"
               />
               
-              {/* Overlay */}
+              {/* Modern liquid glass overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
               {/* GitHub button */}
@@ -129,21 +129,21 @@ const UnifiedCard = memo(({
                   whileHover={{ scale: buttonScale }}
                   whileTap={{ scale: 0.9 }}
                   onClick={handleGithubClick}
-                  className="bg-black/80 backdrop-blur-sm w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full flex justify-center items-center cursor-pointer shadow-lg hover:shadow-white/20 transition-all duration-300 border border-white/20 touch-manipulation"
+                  className={`${styles.liquidGlassOverlay} w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-2xl flex justify-center items-center cursor-pointer transition-all duration-300 touch-manipulation`}
                   aria-label={`View ${title} source code`}
                 >
                   <img
                     src={github}
                     alt=""
-                    className="w-1/2 h-1/2 object-contain filter brightness-0 invert"
+                    className="w-1/2 h-1/2 object-contain filter brightness-0 invert relative z-10"
                   />
                 </motion.button>
               </div>
 
               {/* Project index */}
               <div className="absolute top-2 left-2 xs:top-3 xs:left-3">
-                <div className="relative bg-white/10 backdrop-blur-xl rounded-full border border-white/20 px-1.5 py-0.5 xs:px-2 xs:py-1">
-                  <span className="text-white text-xs font-medium">
+                <div className={`${styles.liquidGlassTag} relative px-1.5 py-0.5 xs:px-2 xs:py-1 rounded-xl`}>
+                  <span className="text-white text-xs font-medium relative z-10">
                     0{index + 1}
                   </span>
                 </div>
@@ -151,7 +151,7 @@ const UnifiedCard = memo(({
             </div>
 
             {/* Content section */}
-            <div className={`${styles.cardContent} flex-1 flex flex-col`}>
+            <div className={`${styles.cardContent} flex-1 flex flex-col relative z-20`}>
               {/* Title */}
               <motion.h3 
                 className="text-white font-bold text-lg xs:text-xl sm:text-2xl mb-3 xs:mb-4 group-hover:text-gray-100 transition-colors duration-300"
@@ -195,7 +195,7 @@ const UnifiedCard = memo(({
                   {tags.map((tag, tagIndex) => (
                     <motion.span
                       key={`tag-${tagIndex}`}
-                      className={`px-2 py-1 xs:px-3 xs:py-1 text-xs font-medium rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white transition-all duration-300 hover:bg-white/20`}
+                      className={`${styles.liquidGlassTag} px-2 py-1 xs:px-3 xs:py-1 text-xs font-medium text-white transition-all duration-300`}
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.1 * tagIndex + 0.3, duration: 0.4 }}
@@ -206,18 +206,18 @@ const UnifiedCard = memo(({
                 </div>
               )}
 
-              {/* Corner accents */}
-              <div className={`absolute top-4 right-4 w-8 h-8 ${styles.cornerAccent} border-t border-r`}></div>
-              <div className={`absolute bottom-4 left-4 w-8 h-8 ${styles.cornerAccent} border-b border-l`}></div>
+              {/* Modern liquid glass accents */}
+              <div className={`absolute top-4 right-4 w-8 h-8 ${styles.cornerAccent} border-t border-r opacity-30`}></div>
+              <div className={`absolute bottom-4 left-4 w-8 h-8 ${styles.cornerAccent} border-b border-l opacity-30`}></div>
             </div>
           </div>
         );
 
       case "teamwork":
         return (
-          <div className={`${styles.card} h-full flex flex-col overflow-hidden`}>
+          <div className={`${styles.liquidGlassCard} h-full flex flex-col overflow-hidden`}>
             {/* Image Container */}
-            <div className="relative w-full h-36 xs:h-40 sm:h-48 md:h-52 lg:h-60 overflow-hidden rounded-t-2xl flex-shrink-0">
+            <div className="relative w-full h-36 xs:h-40 sm:h-48 md:h-52 lg:h-60 overflow-hidden rounded-t-3xl flex-shrink-0">
               <img
                 src={image}
                 alt={`${title} project`}
@@ -225,7 +225,7 @@ const UnifiedCard = memo(({
                 loading="lazy"
               />
               
-              {/* Overlay */}
+              {/* Modern liquid glass overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
               {/* Action buttons */}
@@ -235,13 +235,13 @@ const UnifiedCard = memo(({
                     whileHover={{ scale: buttonScale }}
                     whileTap={{ scale: 0.9 }}
                     onClick={handleGithubClick}
-                    className="bg-black/80 backdrop-blur-sm w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full flex justify-center items-center cursor-pointer shadow-lg hover:shadow-white/20 transition-all duration-300 border border-white/20 touch-manipulation"
+                    className={`${styles.liquidGlassOverlay} w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-2xl flex justify-center items-center cursor-pointer transition-all duration-300 touch-manipulation`}
                     aria-label={`View ${title} source code`}
                   >
                     <img
                       src={github}
                       alt=""
-                      className="w-1/2 h-1/2 object-contain filter brightness-0 invert"
+                      className="w-1/2 h-1/2 object-contain filter brightness-0 invert relative z-10"
                     />
                   </motion.button>
                 )}
@@ -250,13 +250,13 @@ const UnifiedCard = memo(({
                     whileHover={{ scale: buttonScale }}
                     whileTap={{ scale: 0.9 }}
                     onClick={handleWebpageClick}
-                    className="bg-black/80 backdrop-blur-sm w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full flex justify-center items-center cursor-pointer shadow-lg hover:shadow-white/20 transition-all duration-300 border border-white/20 touch-manipulation"
+                    className={`${styles.liquidGlassOverlay} w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-2xl flex justify-center items-center cursor-pointer transition-all duration-300 touch-manipulation`}
                     aria-label={`Visit ${title} website`}
                   >
                     <img
                       src={weblink}
                       alt=""
-                      className="w-1/2 h-1/2 object-contain filter brightness-0 invert"
+                      className="w-1/2 h-1/2 object-contain filter brightness-0 invert relative z-10"
                     />
                   </motion.button>
                 )}
@@ -264,8 +264,8 @@ const UnifiedCard = memo(({
 
               {/* Project index */}
               <div className="absolute top-2 left-2 xs:top-3 xs:left-3">
-                <div className="relative bg-white/10 backdrop-blur-xl rounded-full border border-white/20 px-1.5 py-0.5 xs:px-2 xs:py-1">
-                  <span className="text-white text-xs font-medium">
+                <div className={`${styles.liquidGlassTag} relative px-1.5 py-0.5 xs:px-2 xs:py-1 rounded-xl`}>
+                  <span className="text-white text-xs font-medium relative z-10">
                     0{index + 1}
                   </span>
                 </div>
@@ -273,7 +273,7 @@ const UnifiedCard = memo(({
             </div>
 
             {/* Content section */}
-            <div className={`${styles.cardContent} flex-1 flex flex-col`}>
+            <div className={`${styles.cardContent} flex-1 flex flex-col relative z-20`}>
               {/* Title */}
               <motion.h3 
                 className="text-white font-bold text-lg xs:text-xl sm:text-2xl mb-3 xs:mb-4 group-hover:text-gray-100 transition-colors duration-300"
@@ -317,7 +317,7 @@ const UnifiedCard = memo(({
                   {tags.map((tag, tagIndex) => (
                     <motion.span
                       key={`tag-${tagIndex}`}
-                      className={`px-2 py-1 xs:px-3 xs:py-1 text-xs font-medium rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white transition-all duration-300 hover:bg-white/20`}
+                      className={`${styles.liquidGlassTag} px-2 py-1 xs:px-3 xs:py-1 text-xs font-medium text-white transition-all duration-300`}
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.1 * tagIndex + 0.3, duration: 0.4 }}
@@ -328,9 +328,9 @@ const UnifiedCard = memo(({
                 </div>
               )}
 
-              {/* Corner accents */}
-              <div className={`absolute top-4 right-4 w-8 h-8 ${styles.cornerAccent} border-t border-r`}></div>
-              <div className={`absolute bottom-4 left-4 w-8 h-8 ${styles.cornerAccent} border-b border-l`}></div>
+              {/* Modern liquid glass accents */}
+              <div className={`absolute top-4 right-4 w-8 h-8 ${styles.cornerAccent} border-t border-r opacity-30`}></div>
+              <div className={`absolute bottom-4 left-4 w-8 h-8 ${styles.cornerAccent} border-b border-l opacity-30`}></div>
             </div>
           </div>
         );

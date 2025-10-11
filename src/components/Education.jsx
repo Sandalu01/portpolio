@@ -14,38 +14,36 @@ import { textVariant } from "../utils/motion";
 
 // Memoized EducationCard component with consistent design
 const EducationCard = memo(({ education, index }) => {
-  // Consistent content style
+  // Modern liquid glass content style
   const contentStyle = useMemo(() => ({
-    background: "linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(20, 20, 20, 0.98) 50%, rgba(0, 0, 0, 0.95) 100%)",
+    background: "rgba(255, 255, 255, 0.03)",
     color: "#fff",
-    border: "2px solid rgba(255, 255, 255, 0.15)",
-    borderRadius: "24px",
-    backdropFilter: "blur(20px)",
-    WebkitBackdropFilter: "blur(20px)",
+    border: "1px solid rgba(255, 255, 255, 0.08)",
+    borderRadius: "28px",
+    backdropFilter: "blur(24px)",
+    WebkitBackdropFilter: "blur(24px)",
     boxShadow: `
-      0 25px 50px rgba(0, 0, 0, 0.6),
-      0 0 0 1px rgba(255, 255, 255, 0.1),
-      inset 0 2px 0 rgba(255, 255, 255, 0.1),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.05)
+      0 12px 40px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.02)
     `,
   }), []);
 
-  // Consistent arrow style
+  // Modern liquid glass arrow style
   const contentArrowStyle = useMemo(() => ({ 
-    borderRight: "7px solid rgba(255, 255, 255, 0.15)",
+    borderRight: "7px solid rgba(255, 255, 255, 0.08)",
     filter: "drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4))"
   }), []);
 
-  // Consistent icon style
+  // Modern liquid glass icon style
   const iconStyle = useMemo(() => ({
-    background: "linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 240, 240, 1) 100%)",
-    border: "3px solid rgba(0, 0, 0, 0.8)",
-    backdropFilter: "blur(10px)",
-    WebkitBackdropFilter: "blur(10px)",
+    background: "rgba(255, 255, 255, 0.05)",
+    border: "1px solid rgba(255, 255, 255, 0.12)",
+    backdropFilter: "blur(16px)",
+    WebkitBackdropFilter: "blur(16px)",
     boxShadow: `
-      0 20px 40px rgba(0, 0, 0, 0.3),
-      0 0 0 2px rgba(255, 255, 255, 0.9),
-      inset 0 2px 0 rgba(255, 255, 255, 1)
+      0 8px 24px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12)
     `,
   }), []);
 

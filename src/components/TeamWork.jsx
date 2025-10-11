@@ -70,7 +70,7 @@ const TeamWork = () => {
             variants={fadeIn("", "", 0.1, 1)}
             className="mt-8"
           >
-            <div className={`${styles.card} ${styles.cardContent}`}>
+            <div className={`${styles.liquidGlass} ${styles.cardContent}`}>
               <p className="text-gray-300 text-sm sm:text-base max-w-4xl leading-relaxed sm:leading-[32px] text-center sm:text-left">
                 <span className="font-semibold text-white">Collaborative Development Experience</span>
                 <br className="hidden sm:block" />

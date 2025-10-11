@@ -69,7 +69,7 @@ const Works = () => {
             variants={fadeIn("", "", 0.1, 1)}
             className="mt-6 sm:mt-8"
           >
-            <div className={`${styles.card} ${styles.cardContent}`}>
+            <div className={`${styles.liquidGlass} ${styles.cardContent}`}>
               <p className="text-gray-300 text-sm sm:text-base lg:text-lg max-w-4xl leading-relaxed sm:leading-[28px] lg:leading-[32px] text-center sm:text-left">
                 <span className="font-semibold text-white">Hi, I'm Sandalu Thushan Ekanayaka.</span>
                 <br className="hidden sm:block" />
