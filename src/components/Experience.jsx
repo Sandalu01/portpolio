@@ -12,9 +12,9 @@ import { experiences } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { textVariant } from "../utils/motion";
 
-// Premium ExperienceCard with sophisticated black & white design
+// Consistent ExperienceCard with standardized design
 const ExperienceCard = memo(({ experience, index }) => {
-  // Ultra-premium black glass content styling
+  // Consistent content styling
   const contentStyle = useMemo(() => ({
     background: "linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(20, 20, 20, 0.98) 50%, rgba(0, 0, 0, 0.95) 100%)",
     color: "#fff",
@@ -30,13 +30,13 @@ const ExperienceCard = memo(({ experience, index }) => {
     `,
   }), []);
 
-  // Sophisticated arrow styling
+  // Consistent arrow styling
   const contentArrowStyle = useMemo(() => ({ 
     borderRight: "7px solid rgba(255, 255, 255, 0.15)",
     filter: "drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4))"
   }), []);
 
-  // Premium icon container styling
+  // Consistent icon container styling
   const iconStyle = useMemo(() => ({
     background: "linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 240, 240, 1) 100%)",
     border: "3px solid rgba(0, 0, 0, 0.8)",
@@ -77,21 +77,7 @@ const ExperienceCard = memo(({ experience, index }) => {
       }
     >
       <div className="relative overflow-hidden">
-        {/* Premium background pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-4 left-4 w-12 h-12 border border-white/30 rounded-full"></div>
-          <div className="absolute bottom-4 right-4 w-8 h-8 border-t-2 border-r-2 border-white/40"></div>
-          <div className="absolute top-1/2 right-6 w-6 h-6 bg-white/20 rounded-full blur-sm"></div>
-        </div>
-        
-        {/* Elegant geometric accents */}
-        <div className="absolute top-0 left-0 w-16 h-16 border-l-2 border-t-2 border-white/10 rounded-tl-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-16 h-16 border-r-2 border-b-2 border-white/10 rounded-br-3xl"></div>
-        
-        {/* Sophisticated shimmer effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/3 to-transparent -translate-x-full animate-shimmer pointer-events-none" />
-        
-        {/* Premium content header */}
+        {/* Content header */}
         <div className="relative z-10 mb-8">
           <motion.h3 
             className="text-white text-xl sm:text-2xl lg:text-3xl font-bold mb-4 tracking-tight leading-tight"
@@ -116,11 +102,11 @@ const ExperienceCard = memo(({ experience, index }) => {
             </p>
           </motion.div>
 
-          {/* Elegant separator line */}
+          {/* Separator line */}
           <div className="w-20 h-px bg-white/40 mb-6"></div>
         </div>
 
-        {/* Premium achievements list */}
+        {/* Achievements list */}
         <motion.ul 
           className="space-y-4 sm:space-y-5 relative z-10"
           initial={{ opacity: 0 }}
@@ -131,7 +117,7 @@ const ExperienceCard = memo(({ experience, index }) => {
           {experience.points?.slice(0, window.innerWidth < 768 ? 3 : 4).map((point, pointIndex) => (
             <motion.li
               key={`experience-point-${pointIndex}`}
-              className="text-gray-100 text-sm sm:text-base lg:text-lg leading-relaxed flex items-start gap-4 group hover:text-white transition-all duration-400"
+              className="text-gray-100 text-sm sm:text-base lg:text-lg leading-relaxed flex items-start gap-4 group hover:text-white transition-all duration-300"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ 
@@ -141,11 +127,10 @@ const ExperienceCard = memo(({ experience, index }) => {
               }}
               viewport={{ once: true, margin: "-50px" }}
             >
-              {/* Sophisticated bullet design */}
+              {/* Bullet design */}
               <div className="relative mt-2 flex-shrink-0">
                 <div className="w-2 h-2 bg-white rounded-full shadow-lg group-hover:scale-125 transition-transform duration-300" />
                 <div className="absolute inset-0 w-2 h-2 bg-white/50 rounded-full animate-ping opacity-40" />
-                <div className="absolute -inset-1 border border-white/20 rounded-full group-hover:border-white/40 transition-colors duration-300" />
               </div>
               
               <span className="group-hover:text-shadow-sm transition-all duration-300 tracking-wide leading-relaxed">
@@ -154,7 +139,7 @@ const ExperienceCard = memo(({ experience, index }) => {
             </motion.li>
           ))}
           
-          {/* Premium "show more" indicator */}
+          {/* Show more indicator */}
           {experience.points?.length > (window.innerWidth < 768 ? 3 : 4) && (
             <li className="text-gray-400 text-sm italic ml-8 bg-white/5 backdrop-blur-sm rounded-full px-4 py-2 w-fit border border-white/10">
               +{experience.points.length - (window.innerWidth < 768 ? 3 : 4)} more achievements...
@@ -162,19 +147,13 @@ const ExperienceCard = memo(({ experience, index }) => {
           )}
         </motion.ul>
 
-        {/* Sophisticated decorative elements */}
-        <div className="absolute top-6 right-6 w-12 h-12 border border-white/10 rounded-full animate-pulse opacity-30"></div>
-        <div className="absolute bottom-6 left-6 w-8 h-8 bg-white/5 rounded-full blur-sm"></div>
+        {/* Corner accents */}
+        <div className={`absolute top-4 right-4 w-8 h-8 ${styles.cornerAccent} border-t border-r`}></div>
+        <div className={`absolute bottom-4 left-4 w-8 h-8 ${styles.cornerAccent} border-b border-l`}></div>
         
-        {/* Premium edge highlights */}
+        {/* Edge highlights */}
         <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
         <div className="absolute bottom-0 left-12 right-12 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-        
-        {/* Corner accent dots */}
-        <div className="absolute top-3 left-3 w-1 h-1 bg-white/60 rounded-full"></div>
-        <div className="absolute top-3 right-3 w-1 h-1 bg-white/60 rounded-full"></div>
-        <div className="absolute bottom-3 left-3 w-1 h-1 bg-white/40 rounded-full"></div>
-        <div className="absolute bottom-3 right-3 w-1 h-1 bg-white/40 rounded-full"></div>
       </div>
     </VerticalTimelineElement>
   );
@@ -183,7 +162,7 @@ const ExperienceCard = memo(({ experience, index }) => {
 ExperienceCard.displayName = 'ExperienceCard';
 
 const Experience = () => {
-  // Premium timeline styling
+  // Consistent timeline styling
   const timelineLineColor = useMemo(() => ({
     background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.8) 100%)',
     filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.3))',
@@ -192,39 +171,25 @@ const Experience = () => {
 
   return (
     <>
-      {/* Premium animations and responsive styles */}
+      {/* Consistent animations and responsive styles */}
       <style jsx global>{`
         @keyframes shimmer {
           0% { transform: translateX(-100%); }
           100% { transform: translateX(100%); }
         }
-        @keyframes float-elegant {
-          0%, 100% { transform: translateY(0px) scale(1); opacity: 0.3; }
-          50% { transform: translateY(-15px) scale(1.05); opacity: 0.6; }
-        }
         @keyframes spin-slow {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
-        }
-        @keyframes pulse-sophisticated {
-          0%, 100% { opacity: 0.4; transform: scale(1); }
-          50% { opacity: 0.8; transform: scale(1.1); }
         }
         
         .animate-shimmer {
           animation: shimmer 4s ease-in-out infinite;
         }
-        .animate-float-elegant {
-          animation: float-elegant 6s ease-in-out infinite;
-        }
         .animate-spin-slow {
           animation: spin-slow 12s linear infinite;
         }
-        .animate-pulse-sophisticated {
-          animation: pulse-sophisticated 3s ease-in-out infinite;
-        }
 
-        /* Ultra-responsive timeline styling */
+        /* Responsive timeline styling */
         @media (max-width: 768px) {
           .vertical-timeline::before {
             left: 30px !important;
@@ -271,7 +236,7 @@ const Experience = () => {
           }
         }
 
-        /* Premium date styling */
+        /* Date styling */
         .vertical-timeline-element-date {
           color: rgba(255, 255, 255, 0.9) !important;
           font-weight: 600 !important;
@@ -280,9 +245,9 @@ const Experience = () => {
         }
       `}</style>
 
-      <div className="relative px-4 sm:px-6 lg:px-8 overflow-hidden bg-black/5">
-        {/* Sophisticated background elements */}
-        <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
+      <div className={`relative ${styles.sectionPadding} ${styles.container}`}>
+        {/* Background decorative elements */}
+        <div className={styles.backgroundGrid}>
           <div 
             style={{
               backgroundImage: `
@@ -295,39 +260,34 @@ const Experience = () => {
           />
         </div>
         
-        {/* Elegant geometric shapes */}
-        <div className="absolute top-32 left-20 w-64 h-64 border border-white/10 rounded-full pointer-events-none animate-float-elegant"></div>
-        <div className="absolute bottom-40 right-24 w-48 h-48 border-t-2 border-r-2 border-white/15 rotate-45 pointer-events-none"></div>
-        <div className="absolute top-1/2 right-16 w-32 h-32 bg-white/5 rounded-lg rotate-12 pointer-events-none animate-pulse-sophisticated"></div>
-        <div className="absolute bottom-20 left-16 w-20 h-20 border border-white/20 rounded-full pointer-events-none"></div>
+        <div className={`absolute top-32 left-20 w-64 h-64 ${styles.backgroundOrb} bg-white/5`} />
+        <div className={`absolute bottom-40 right-24 w-48 h-48 ${styles.backgroundOrb} bg-white/5`} />
         
-        {/* Premium header section */}
-        <motion.div variants={textVariant()}>
-          <p className={`${styles.sectionSubText} text-center relative z-10 text-gray-300 tracking-widest uppercase`}>
+        {/* Header section */}
+        <motion.div variants={textVariant()} className={styles.contentContainer}>
+          <p className={`${styles.sectionSubText} text-center`}>
             What I have done so far
           </p>
-          <h2 className={`${styles.sectionHeadText} text-center relative z-10 mb-8 text-white font-light tracking-tight`}>
+          <h2 className={`${styles.sectionHeadText} text-center mb-8`}>
             Work Experience
-            <span className="text-gray-400 font-thin">.</span>
+            <span className="text-gray-400">.</span>
           </h2>
           
-          {/* Sophisticated decorative elements */}
-          <div className="flex justify-center relative z-10 mb-8">
+          {/* Decorative line */}
+          <div className="flex justify-center mb-8">
             <div className="relative">
               <div className="w-32 h-px bg-white shadow-lg" />
               <div className="absolute left-1/2 top-0 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full shadow-lg" />
-              <div className="absolute left-1/4 top-0 transform -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-white/60 rounded-full" />
-              <div className="absolute right-1/4 top-0 transform translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-white/60 rounded-full" />
             </div>
           </div>
         </motion.div>
 
-        {/* Premium timeline container */}
+        {/* Timeline container */}
         <div className="mt-16 sm:mt-24 flex flex-col relative z-10">
           <VerticalTimeline
             lineColor={timelineLineColor.background}
             animate={true}
-            className="premium-timeline"
+            className="experience-timeline"
           >
             {experiences?.map((experience, index) => (
               <ExperienceCard 
@@ -339,14 +299,14 @@ const Experience = () => {
           </VerticalTimeline>
         </div>
 
-        {/* Ultra-premium bottom separator */}
-        <div className="mt-16 sm:mt-20 w-full relative z-10">
-          <div className="h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+        {/* Bottom separator */}
+        <div className="mt-16 sm:mt-20 w-full relative">
+          <div className={styles.accentLine} />
           <div className="mt-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
           <div className="mt-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
           
           {/* Center accent */}
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-lg border-2 border-black/20" />
+          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-lg" />
         </div>
       </div>
     </>

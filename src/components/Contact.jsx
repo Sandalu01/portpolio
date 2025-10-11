@@ -67,18 +67,14 @@ const SubmitButton = memo(({ loading, onClick }) => (
     type="submit"
     onClick={onClick}
     disabled={loading}
-    className="relative group w-fit overflow-hidden"
+    className={`${styles.primaryButton}`}
     whileHover={{ scale: loading ? 1 : 1.02 }}
     whileTap={{ scale: loading ? 1 : 0.98 }}
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay: 0.4 }}
   >
-    {/* Button background */}
-    <div className="absolute inset-0 bg-white border border-white rounded-lg shadow-lg group-hover:bg-gray-100 group-active:bg-gray-200 transition-all duration-300"></div>
-    
-    {/* Button content */}
-    <span className="relative z-10 block py-4 px-8 text-black font-bold transition-all duration-300 tracking-wide">
+    <span className="relative z-10 block transition-all duration-300 tracking-wide">
       {loading ? (
         <span className="flex items-center gap-2">
           <div className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin"></div>
@@ -89,12 +85,9 @@ const SubmitButton = memo(({ loading, onClick }) => (
       )}
     </span>
     
-    {/* Subtle shadow on hover */}
-    <div className="absolute inset-0 rounded-lg shadow-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-300 pointer-events-none"></div>
-    
     {/* Corner highlights */}
-    <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-black/20 rounded-tl-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-    <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-black/20 rounded-br-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    <div className={`absolute top-0 left-0 w-4 h-4 ${styles.cornerAccent} border-t-2 border-l-2 border-black/20 rounded-tl-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+    <div className={`absolute bottom-0 right-0 w-4 h-4 ${styles.cornerAccent} border-b-2 border-r-2 border-black/20 rounded-br-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
   </motion.button>
 ));
 
@@ -179,32 +172,24 @@ const Contact = () => {
     }
   }, [form, validateForm]);
 
-  // Memoize background elements
-  const backgroundElements = useMemo(() => (
-    <>
-      {/* Subtle geometric patterns */}
-      <div className="absolute top-20 left-10 w-32 h-32 border border-gray-800/30 rounded-full pointer-events-none" />
-      <div className="absolute bottom-32 right-16 w-24 h-24 border border-gray-700/20 rounded-lg rotate-45 pointer-events-none" />
-      <div className="absolute top-1/3 right-1/4 w-16 h-16 border-t-2 border-r-2 border-gray-800/40 pointer-events-none" />
-      
-      {/* Grid pattern overlay */}
-      <div 
-        className="absolute inset-0 opacity-5 pointer-events-none"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: '20px 20px'
-        }}
-      />
-    </>
-  ), []);
-
   return (
-    <div className="relative px-4 sm:px-6 lg:px-8 bg-black/5">
+    <div className={`relative ${styles.sectionPadding} ${styles.container}`}>
       {/* Background decorative elements */}
-      {backgroundElements}
+      <div className={styles.backgroundGrid}>
+        <div 
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '40px 40px'
+          }}
+          className="w-full h-full"
+        />
+      </div>
+      
+      <div className={`absolute top-20 left-10 w-32 h-32 ${styles.backgroundOrb} bg-white/5`} />
+      <div className={`absolute bottom-32 right-16 w-24 h-24 ${styles.backgroundOrb} bg-white/5`} />
       
       <div className="xl:mt-12 flex xl:flex-row flex-col-reverse gap-8 sm:gap-12 overflow-hidden relative z-10">
         {/* Contact Form */}
@@ -212,27 +197,29 @@ const Contact = () => {
           variants={slideIn("left", "tween", 0.2, 1)}
           className="flex-[0.75] relative"
         >
-          {/* Minimalist black container for form */}
-          <div className="relative overflow-hidden rounded-2xl bg-black/90 border border-gray-800/50 shadow-2xl backdrop-blur-sm">
-            {/* Subtle white accent lines */}
+          {/* Form container */}
+          <div className={`${styles.card}`}>
+            {/* Border accents */}
             <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
             <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
             
-            <div className="relative z-10 p-6 sm:p-8">
+            <div className={`${styles.cardContent}`}>
               {/* Header */}
               <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                <p className={`${styles.sectionSubText} relative text-gray-300`}>
+                <p className={`${styles.sectionSubText} text-gray-300`}>
                   Get in touch
                 </p>
-                <h3 className={`${styles.sectionHeadText} relative text-white`}>
+                <h3 className={`${styles.sectionHeadText} text-white`}>
                   Contact
                   <span className="text-gray-400">.</span>
-                  <div className="absolute -bottom-2 left-0 w-20 h-1 bg-white rounded-full" />
                 </h3>
+                <div className="flex justify-start mt-4">
+                  <div className="w-20 h-px bg-white rounded-full" />
+                </div>
               </motion.div>
 
               {/* Contact Form */}
@@ -284,8 +271,8 @@ const Contact = () => {
             </div>
 
             {/* Corner decorative elements */}
-            <div className="absolute top-4 right-4 w-6 h-6 border-t border-r border-gray-700/40"></div>
-            <div className="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-gray-700/40"></div>
+            <div className={`absolute top-4 right-4 w-6 h-6 ${styles.cornerAccent} border-t border-r`}></div>
+            <div className={`absolute bottom-4 left-4 w-6 h-6 ${styles.cornerAccent} border-b border-l`}></div>
           </div>
         </motion.div>
 
@@ -294,10 +281,10 @@ const Contact = () => {
           variants={slideIn("right", "tween", 0.2, 1)}
           className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px] relative"
         >
-          {/* Minimalist container for canvas */}
-          <div className="relative w-full h-full overflow-hidden rounded-2xl bg-black/80 border border-gray-800/50 shadow-2xl backdrop-blur-sm">
-            {/* Subtle frame accents */}
-            <div className="absolute inset-2 border border-gray-700/20 rounded-xl pointer-events-none"></div>
+          {/* Canvas container */}
+          <div className={`${styles.card} h-full`}>
+            {/* Frame accents */}
+            <div className="absolute inset-2 border border-white/20 rounded-xl pointer-events-none"></div>
             
             {/* Earth Canvas */}
             <div className="relative z-10 w-full h-full">
@@ -305,19 +292,22 @@ const Contact = () => {
             </div>
 
             {/* Frame corners */}
-            <div className="absolute top-2 left-2 w-8 h-8 border-t-2 border-l-2 border-white/20"></div>
-            <div className="absolute top-2 right-2 w-8 h-8 border-t-2 border-r-2 border-white/20"></div>
-            <div className="absolute bottom-2 left-2 w-8 h-8 border-b-2 border-l-2 border-white/20"></div>
-            <div className="absolute bottom-2 right-2 w-8 h-8 border-b-2 border-r-2 border-white/20"></div>
+            <div className={`absolute top-2 left-2 w-8 h-8 ${styles.cornerAccent} border-t-2 border-l-2`}></div>
+            <div className={`absolute top-2 right-2 w-8 h-8 ${styles.cornerAccent} border-t-2 border-r-2`}></div>
+            <div className={`absolute bottom-2 left-2 w-8 h-8 ${styles.cornerAccent} border-b-2 border-l-2`}></div>
+            <div className={`absolute bottom-2 right-2 w-8 h-8 ${styles.cornerAccent} border-b-2 border-r-2`}></div>
           </div>
         </motion.div>
       </div>
 
       {/* Bottom separator */}
-      <div className="mt-12 sm:mt-16 w-full h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
-      
-      {/* Additional decorative line */}
-      <div className="mt-1 w-full h-px bg-gradient-to-r from-transparent via-gray-600/20 to-transparent" />
+      <div className="mt-12 sm:mt-16 w-full relative">
+        <div className={styles.accentLine} />
+        <div className="mt-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        
+        {/* Center accent */}
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full shadow-lg" />
+      </div>
     </div>
   );
 };

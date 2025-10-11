@@ -12,42 +12,42 @@ import { education } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { textVariant } from "../utils/motion";
 
-// Memoized EducationCard component with liquid glass effect
+// Memoized EducationCard component with consistent design
 const EducationCard = memo(({ education, index }) => {
-  // Liquid glass content style with enhanced glassmorphism
+  // Consistent content style
   const contentStyle = useMemo(() => ({
-    background: "linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.02) 100%)",
+    background: "linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(20, 20, 20, 0.98) 50%, rgba(0, 0, 0, 0.95) 100%)",
     color: "#fff",
-    border: "1px solid rgba(255, 255, 255, 0.18)",
+    border: "2px solid rgba(255, 255, 255, 0.15)",
     borderRadius: "24px",
     backdropFilter: "blur(20px)",
     WebkitBackdropFilter: "blur(20px)",
     boxShadow: `
-      0 8px 32px rgba(0, 0, 0, 0.37),
-      inset 0 1px 0 rgba(255, 255, 255, 0.16),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.1),
-      0 0 0 1px rgba(255, 255, 255, 0.05)
+      0 25px 50px rgba(0, 0, 0, 0.6),
+      0 0 0 1px rgba(255, 255, 255, 0.1),
+      inset 0 2px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.05)
     `,
   }), []);
 
-  // Enhanced liquid glass arrow style
+  // Consistent arrow style
   const contentArrowStyle = useMemo(() => ({ 
-    borderRight: "7px solid rgba(255, 255, 255, 0.1)",
-    filter: "drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3))"
+    borderRight: "7px solid rgba(255, 255, 255, 0.15)",
+    filter: "drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4))"
   }), []);
 
-  // Enhanced liquid glass icon style
+  // Consistent icon style
   const iconStyle = useMemo(() => ({
-    background: `linear-gradient(135deg, ${education.iconBg}40 0%, ${education.iconBg}20 100%)`,
-    border: "2px solid rgba(255, 255, 255, 0.25)",
-    backdropFilter: "blur(15px)",
-    WebkitBackdropFilter: "blur(15px)",
+    background: "linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 240, 240, 1) 100%)",
+    border: "3px solid rgba(0, 0, 0, 0.8)",
+    backdropFilter: "blur(10px)",
+    WebkitBackdropFilter: "blur(10px)",
     boxShadow: `
-      0 12px 35px rgba(0, 0, 0, 0.35),
-      inset 0 2px 0 rgba(255, 255, 255, 0.3),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.15)
+      0 20px 40px rgba(0, 0, 0, 0.3),
+      0 0 0 2px rgba(255, 255, 255, 0.9),
+      inset 0 2px 0 rgba(255, 255, 255, 1)
     `,
-  }), [education.iconBg]);
+  }), []);
 
   return (
     <VerticalTimelineElement
@@ -73,20 +73,10 @@ const EducationCard = memo(({ education, index }) => {
       }
     >
       <div className="relative overflow-hidden">
-        {/* Liquid glass overlay with animated gradients */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white/8 via-transparent to-white/3 rounded-3xl pointer-events-none" />
-        
-        {/* Floating liquid orbs */}
-        <div className="absolute top-2 right-2 w-20 h-20 bg-gradient-to-br from-blue-400/20 via-purple-400/15 to-transparent rounded-full blur-2xl animate-pulse pointer-events-none" />
-        <div className="absolute bottom-4 left-3 w-16 h-16 bg-gradient-to-tr from-purple-400/15 via-pink-400/10 to-transparent rounded-full blur-xl animate-pulse delay-1000 pointer-events-none" />
-        
-        {/* Liquid shimmer animation */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-shimmer pointer-events-none" />
-        
-        {/* Header section */}
+        {/* Content header */}
         <div className="relative z-10 mb-6">
           <motion.h3 
-            className="text-white text-lg sm:text-xl lg:text-2xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-purple-100 drop-shadow-sm"
+            className="text-white text-lg sm:text-xl lg:text-2xl font-bold mb-3"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 * index, duration: 0.6 }}
@@ -96,7 +86,7 @@ const EducationCard = memo(({ education, index }) => {
           </motion.h3>
           
           <motion.p
-            className="text-blue-100/80 text-sm sm:text-base font-medium mb-4 filter drop-shadow-sm"
+            className="text-gray-300 text-sm sm:text-base font-medium mb-4"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 * index, duration: 0.6 }}
@@ -106,7 +96,7 @@ const EducationCard = memo(({ education, index }) => {
           </motion.p>
         </div>
 
-        {/* Points section with liquid glass styling */}
+        {/* Points section */}
         <motion.ul 
           className="mt-4 space-y-3 sm:space-y-4 relative z-10"
           initial={{ opacity: 0 }}
@@ -117,7 +107,7 @@ const EducationCard = memo(({ education, index }) => {
           {education.points?.slice(0, window.innerWidth < 768 ? 3 : 4).map((point, pointIndex) => (
             <motion.li
               key={`education-point-${pointIndex}`}
-              className="text-white/90 text-sm sm:text-base leading-relaxed flex items-start gap-4 group hover:text-white transition-all duration-500"
+              className="text-gray-100 text-sm sm:text-base leading-relaxed flex items-start gap-4 group hover:text-white transition-all duration-300"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ 
@@ -127,33 +117,33 @@ const EducationCard = memo(({ education, index }) => {
               }}
               viewport={{ once: true, margin: "-50px" }}
             >
-              {/* Liquid glass bullet point */}
+              {/* Bullet point */}
               <div className="relative mt-2 flex-shrink-0">
-                <div className="w-3 h-3 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-full shadow-lg animate-pulse" />
-                <div className="absolute inset-0 w-3 h-3 bg-gradient-to-r from-blue-400/50 to-purple-400/50 rounded-full blur-sm animate-pulse delay-500" />
+                <div className="w-2 h-2 bg-white rounded-full shadow-lg group-hover:scale-125 transition-transform duration-300" />
+                <div className="absolute inset-0 w-2 h-2 bg-white/50 rounded-full animate-ping opacity-40" />
               </div>
               
-              <span className="group-hover:drop-shadow-sm transition-all duration-300 filter">
+              <span className="group-hover:drop-shadow-sm transition-all duration-300">
                 {point}
               </span>
             </motion.li>
           ))}
           
-          {/* Show more indicator with liquid glass effect */}
+          {/* Show more indicator */}
           {education.points?.length > (window.innerWidth < 768 ? 3 : 4) && (
-            <li className="text-blue-200/60 text-sm italic ml-7 backdrop-blur-sm bg-white/5 rounded-full px-3 py-1 w-fit">
+            <li className="text-gray-400 text-sm italic ml-7 backdrop-blur-sm bg-white/5 rounded-full px-3 py-1 w-fit">
               +{education.points.length - (window.innerWidth < 768 ? 3 : 4)} more achievements...
             </li>
           )}
         </motion.ul>
 
-        {/* Liquid glass decorative elements */}
-        <div className="absolute -top-2 -right-2 w-24 h-24 bg-gradient-to-bl from-cyan-400/15 via-blue-400/10 to-transparent rounded-full blur-2xl pointer-events-none animate-float" />
-        <div className="absolute -bottom-2 -left-2 w-20 h-20 bg-gradient-to-tr from-purple-400/15 via-pink-400/10 to-transparent rounded-full blur-xl pointer-events-none animate-float-delayed" />
+        {/* Corner accents */}
+        <div className={`absolute top-4 right-4 w-8 h-8 ${styles.cornerAccent} border-t border-r`}></div>
+        <div className={`absolute bottom-4 left-4 w-8 h-8 ${styles.cornerAccent} border-b border-l`}></div>
         
-        {/* Edge highlights for glass effect */}
-        <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-        <div className="absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        {/* Edge highlights */}
+        <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+        <div className="absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
       </div>
     </VerticalTimelineElement>
   );
@@ -162,28 +152,20 @@ const EducationCard = memo(({ education, index }) => {
 EducationCard.displayName = 'EducationCard';
 
 const Education = () => {
-  // Liquid glass timeline line with animated gradient
+  // Consistent timeline line with white gradient
   const timelineLineColor = useMemo(() => ({
-    background: 'linear-gradient(to bottom, rgba(59, 130, 246, 0.8) 0%, rgba(139, 92, 246, 0.6) 50%, rgba(59, 130, 246, 0.8) 100%)',
-    filter: 'drop-shadow(0 0 8px rgba(59, 130, 246, 0.3))',
+    background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.8) 100%)',
+    filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.3))',
     width: '3px'
   }), []);
 
   return (
     <>
-      {/* Custom Tailwind animations */}
+      {/* Consistent animations and responsive styles */}
       <style jsx global>{`
         @keyframes shimmer {
           0% { transform: translateX(-100%); }
           100% { transform: translateX(100%); }
-        }
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.5; }
-          50% { transform: translateY(-10px) rotate(180deg); opacity: 0.8; }
-        }
-        @keyframes float-delayed {
-          0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.4; }
-          50% { transform: translateY(-8px) rotate(-180deg); opacity: 0.7; }
         }
         @keyframes spin-slow {
           from { transform: rotate(0deg); }
@@ -191,24 +173,18 @@ const Education = () => {
         }
         
         .animate-shimmer {
-          animation: shimmer 3s ease-in-out infinite;
-        }
-        .animate-float {
-          animation: float 4s ease-in-out infinite;
-        }
-        .animate-float-delayed {
-          animation: float-delayed 5s ease-in-out infinite 2s;
+          animation: shimmer 4s ease-in-out infinite;
         }
         .animate-spin-slow {
-          animation: spin-slow 8s linear infinite;
+          animation: spin-slow 12s linear infinite;
         }
 
-        /* Mobile responsive overrides using Tailwind-first approach */
+        /* Responsive timeline styling */
         @media (max-width: 768px) {
           .vertical-timeline::before {
             left: 30px !important;
             width: 2px !important;
-            background: linear-gradient(to bottom, rgba(59, 130, 246, 0.6), rgba(139, 92, 246, 0.4)) !important;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3)) !important;
           }
           .vertical-timeline-element-content {
             margin-left: 60px !important;
@@ -231,7 +207,7 @@ const Education = () => {
             padding: 0.5em 0 0 0 !important;
             text-align: left !important;
             font-size: 0.875rem !important;
-            color: rgba(147, 197, 253, 0.8) !important;
+            color: rgba(255, 255, 255, 0.8) !important;
             margin-bottom: 1rem !important;
             font-weight: 500 !important;
           }
@@ -250,39 +226,49 @@ const Education = () => {
         }
       `}</style>
 
-      <div className="relative px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Animated liquid background orbs */}
-        <div className="absolute top-0 left-1/4 w-48 h-48 sm:w-72 sm:h-72 bg-gradient-to-br from-blue-500/10 via-cyan-400/5 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse" />
-        <div className="absolute bottom-0 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-tl from-purple-500/10 via-pink-400/5 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse delay-1000" />
+      <div className={`relative ${styles.sectionPadding} ${styles.container}`}>
+        {/* Background decorative elements */}
+        <div className={styles.backgroundGrid}>
+          <div 
+            style={{
+              backgroundImage: `
+                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+              `,
+              backgroundSize: '40px 40px'
+            }}
+            className="w-full h-full"
+          />
+        </div>
         
-        {/* Floating liquid particles */}
-        <div className="absolute top-1/3 right-1/3 w-32 h-32 bg-gradient-to-br from-indigo-400/8 to-transparent rounded-full blur-2xl animate-float pointer-events-none" />
-        <div className="absolute bottom-1/3 left-1/3 w-40 h-40 bg-gradient-to-tr from-violet-400/8 to-transparent rounded-full blur-2xl animate-float-delayed pointer-events-none" />
+        <div className={`absolute top-0 left-1/4 w-48 h-48 sm:w-72 sm:h-72 ${styles.backgroundOrb} bg-white/5`} />
+        <div className={`absolute bottom-0 right-1/4 w-64 h-64 sm:w-96 sm:h-96 ${styles.backgroundOrb} bg-white/5`} />
         
-        <motion.div variants={textVariant()}>
-          <p className={`${styles.sectionSubText} text-center relative z-10 text-blue-100/80 drop-shadow-sm`}>
+        {/* Header section */}
+        <motion.div variants={textVariant()} className={styles.contentContainer}>
+          <p className={`${styles.sectionSubText} text-center`}>
             My Academic Journey
           </p>
-          <h2 className={`${styles.sectionHeadText} text-center relative z-10 mb-6`}>
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-purple-100 drop-shadow-lg filter">
-              Education
-            </span>
+          <h2 className={`${styles.sectionHeadText} text-center mb-6`}>
+            Education
+            <span className="text-gray-400">.</span>
           </h2>
           
-          {/* Liquid glass decorative line */}
-          <div className="flex justify-center relative z-10 mb-4">
+          {/* Decorative line */}
+          <div className="flex justify-center mb-4">
             <div className="relative">
-              <div className="w-28 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full shadow-lg" />
-              <div className="absolute inset-0 w-28 h-1 bg-gradient-to-r from-blue-400/50 via-purple-400/50 to-pink-400/50 rounded-full blur-sm" />
+              <div className="w-28 h-px bg-white shadow-lg" />
+              <div className="absolute left-1/2 top-0 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full shadow-lg" />
             </div>
           </div>
         </motion.div>
 
+        {/* Timeline container */}
         <div className="mt-12 sm:mt-20 flex flex-col relative z-10">
           <VerticalTimeline
             lineColor={timelineLineColor.background}
             animate={true}
-            className="liquid-glass-timeline"
+            className="education-timeline"
           >
             {education?.map((edu, index) => (
               <EducationCard 
@@ -294,10 +280,13 @@ const Education = () => {
           </VerticalTimeline>
         </div>
 
-        {/* Liquid glass bottom separator */}
-        <div className="mt-12 sm:mt-16 w-full relative z-10">
-          <div className="h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent" />
-          <div className="h-px bg-gradient-to-r from-transparent via-purple-400/30 to-transparent blur-sm mt-1" />
+        {/* Bottom separator */}
+        <div className="mt-12 sm:mt-16 w-full relative">
+          <div className={styles.accentLine} />
+          <div className="mt-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+          
+          {/* Center accent */}
+          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full shadow-lg" />
         </div>
       </div>
     </>
