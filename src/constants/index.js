@@ -156,8 +156,8 @@ export const education = [
 
 const experiences = [
   {
-    title: "intern Software Enginner",
-    company_name: "Payshia Software Solutions(pvt) Ltd",
+    title: "intern Software Engineer",
+    company_name: "Payshia Software Solutions(pvt)Ltd",
     icon: payshia,
     iconBg: "#383E56",
     date: "March 2024 - Present",
