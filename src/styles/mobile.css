@@ -1,0 +1,147 @@
+/* Mobile-first responsive optimizations for Projects section */
+
+/* Custom breakpoints for better mobile experience */
+@media (max-width: 475px) {
+  .xs\:text-xs { font-size: 0.75rem; }
+  .xs\:text-sm { font-size: 0.875rem; }
+  .xs\:text-base { font-size: 1rem; }
+  .xs\:text-lg { font-size: 1.125rem; }
+  .xs\:text-xl { font-size: 1.25rem; }
+  .xs\:text-2xl { font-size: 1.5rem; }
+  
+  .xs\:px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+  .xs\:px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+  .xs\:px-4 { padding-left: 1rem; padding-right: 1rem; }
+  .xs\:px-5 { padding-left: 1.25rem; padding-right: 1.25rem; }
+  
+  .xs\:py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+  .xs\:py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+  
+  .xs\:w-8 { width: 2rem; }
+  .xs\:w-10 { width: 2.5rem; }
+  .xs\:w-12 { width: 3rem; }
+  .xs\:w-20 { width: 5rem; }
+  .xs\:w-24 { width: 6rem; }
+  
+  .xs\:h-8 { height: 2rem; }
+  .xs\:h-10 { height: 2.5rem; }
+  .xs\:h-12 { height: 3rem; }
+  .xs\:h-20 { height: 5rem; }
+  .xs\:h-24 { height: 6rem; }
+  
+  .xs\:gap-2 { gap: 0.5rem; }
+  .xs\:gap-3 { gap: 0.75rem; }
+  
+  .xs\:space-y-2 > * + * { margin-top: 0.5rem; }
+  .xs\:space-y-3 > * + * { margin-top: 0.75rem; }
+  
+  .xs\:mb-3 { margin-bottom: 0.75rem; }
+  .xs\:mb-4 { margin-bottom: 1rem; }
+  .xs\:mb-6 { margin-bottom: 1.5rem; }
+  .xs\:mb-8 { margin-bottom: 2rem; }
+  
+  .xs\:mt-1 { margin-top: 0.25rem; }
+  .xs\:mt-1\.5 { margin-top: 0.375rem; }
+  .xs\:mt-2 { margin-top: 0.5rem; }
+  
+  .xs\:top-3 { top: 0.75rem; }
+  .xs\:right-3 { right: 0.75rem; }
+  .xs\:left-3 { left: 0.75rem; }
+  
+  .xs\:top-6 { top: 1.5rem; }
+  .xs\:right-6 { right: 1.5rem; }
+  .xs\:left-6 { left: 1.5rem; }
+  
+  .xs\:h-40 { height: 10rem; }
+  .xs\:h-48 { height: 12rem; }
+  
+  .xs\:min-h-\[320px\] { min-height: 20rem; }
+  
+  .xs\:leading-\[28px\] { line-height: 1.75rem; }
+}
+
+/* Touch optimization */
+.touch-manipulation {
+  touch-action: manipulation;
+}
+
+/* Prevent text selection on interactive elements */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Improved button touch targets for mobile */
+@media (max-width: 768px) {
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Reduce hover effects on mobile */
+  .group:hover .group-hover\:scale-110 {
+    transform: scale(1.02);
+  }
+  
+  .group:hover .group-hover\:scale-125 {
+    transform: scale(1.05);
+  }
+  
+  /* Optimize card hover effects for mobile */
+  .group:hover .group-hover\:shadow-white\/10 {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    .group:hover .group-hover\:scale-110,
+    .group:hover .group-hover\:scale-125 {
+      transform: none;
+    }
+    
+    .transition-all,
+    .transition-transform,
+    .transition-opacity {
+      transition: none;
+    }
+  }
+}
+
+/* Improved scrolling for mobile */
+@media (max-width: 768px) {
+  .overflow-hidden {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Better grid spacing on very small screens */
+  .grid {
+    gap: 1rem;
+  }
+}
+
+/* Safe area handling for devices with notches */
+@supports (padding: max(0px)) {
+  .mobile-safe {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+}
+
+/* Performance optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-auto {
+  will-change: auto;
+}
+
+/* Optimize images for mobile */
+@media (max-width: 768px) {
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}

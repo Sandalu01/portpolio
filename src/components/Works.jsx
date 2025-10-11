@@ -41,8 +41,8 @@ const Works = () => {
           />
         </div>
         
-        <div className={`absolute top-20 left-1/4 w-64 h-64 ${styles.backgroundOrb} bg-white/5`} />
-        <div className={`absolute bottom-20 right-1/4 w-80 h-80 ${styles.backgroundOrb} bg-white/5`} />
+        <div className={`absolute top-16 sm:top-20 left-1/4 w-48 h-48 sm:w-64 sm:h-64 ${styles.backgroundOrb} bg-white/5`} />
+        <div className={`absolute bottom-16 sm:bottom-20 right-1/4 w-64 h-64 sm:w-80 sm:h-80 ${styles.backgroundOrb} bg-white/5`} />
         
         {/* Header section */}
         <motion.div variants={textVariant()} className={styles.contentContainer}>
@@ -67,10 +67,10 @@ const Works = () => {
         <div className="w-full flex relative z-10">
           <motion.div
             variants={fadeIn("", "", 0.1, 1)}
-            className="mt-8"
+            className="mt-6 sm:mt-8"
           >
             <div className={`${styles.card} ${styles.cardContent}`}>
-              <p className="text-gray-300 text-sm sm:text-base max-w-4xl leading-relaxed sm:leading-[32px] text-center sm:text-left">
+              <p className="text-gray-300 text-sm sm:text-base lg:text-lg max-w-4xl leading-relaxed sm:leading-[28px] lg:leading-[32px] text-center sm:text-left">
                 <span className="font-semibold text-white">Hi, I'm Sandalu Thushan Ekanayaka.</span>
                 <br className="hidden sm:block" />
                 <span className="sm:hidden"> </span>
@@ -89,7 +89,7 @@ const Works = () => {
 
         {/* Projects grid */}
         <motion.div 
-          className="mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 relative z-10"
+          className="mt-8 sm:mt-12 lg:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 relative z-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
@@ -100,7 +100,7 @@ const Works = () => {
         </motion.div>
 
         {/* Bottom separator */}
-        <div className="mt-12 sm:mt-16 w-full relative">
+        <div className="mt-8 sm:mt-12 lg:mt-16 w-full relative">
           <div className={styles.accentLine} />
           <div className="mt-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
           <div className="mt-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />

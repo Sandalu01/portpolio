@@ -5,7 +5,7 @@ import { github, weblink } from "../../assets";
 import { fadeIn } from "../../utils/motion";
 import { styles } from "../../styles";
 
-// Unified Card component that handles all card types
+// Unified Card component that handles all card types with mobile optimization
 const UnifiedCard = memo(({
   index = 0,
   type = "project", // "project", "service", "teamwork"
@@ -28,12 +28,16 @@ const UnifiedCard = memo(({
     fadeIn("up", "spring", index * 0.5, 0.75), [index]
   );
 
-  // Memoize tilt options
-  const tiltOptions = useMemo(() => ({
-    max: 45,
-    scale: 1.05,
-    speed: 450,
-  }), []);
+  // Optimized tilt options for mobile
+  const tiltOptions = useMemo(() => {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    return {
+      max: isMobile ? 15 : 45,
+      scale: isMobile ? 1.02 : 1.05,
+      speed: 450,
+      disable: isMobile,
+    };
+  }, []);
 
   // Memoized click handlers
   const handleGithubClick = useCallback(() => {
@@ -48,32 +52,38 @@ const UnifiedCard = memo(({
     }
   }, [webpage]);
 
+  // Mobile-optimized hover effects
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const hoverY = isMobile ? 0 : -10;
+  const hoverScale = isMobile ? 1.01 : 1.02;
+  const buttonScale = isMobile ? 1.05 : 1.1;
+
   // Render different card types
   const renderCardContent = () => {
     switch (type) {
       case "service":
         return (
-          <div className={`${styles.card} h-full min-h-[320px] group-hover:shadow-white/10 transition-all duration-300`}>
+          <div className={`${styles.card} h-full min-h-[280px] xs:min-h-[320px] group-hover:shadow-white/10 transition-all duration-300`}>
             {/* Content container */}
-            <div className="relative p-8 h-full flex flex-col justify-center items-center text-center">
+            <div className="relative p-6 xs:p-8 h-full flex flex-col justify-center items-center text-center">
               {/* Number badge */}
-              <div className="absolute top-6 right-6">
-                <div className="relative bg-white text-black rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm shadow-lg group-hover:bg-gray-100 transition-colors duration-300">
+              <div className="absolute top-4 right-4 xs:top-6 xs:right-6">
+                <div className="relative bg-white text-black rounded-full w-7 h-7 xs:w-8 xs:h-8 flex items-center justify-center font-bold text-xs xs:text-sm shadow-lg group-hover:bg-gray-100 transition-colors duration-300">
                   <span className="relative z-10">0{index + 1}</span>
                 </div>
               </div>
 
               {/* Icon container */}
-              <div className="relative mb-8 group/icon">
+              <div className="relative mb-6 xs:mb-8 group/icon">
                 <motion.div 
-                  className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/30 shadow-lg flex items-center justify-center group-hover:bg-white/15 group-hover:border-white/50 transition-all duration-300"
-                  whileHover={{ rotate: 5, scale: 1.05 }}
+                  className="relative w-16 h-16 xs:w-20 xs:h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/30 shadow-lg flex items-center justify-center group-hover:bg-white/15 group-hover:border-white/50 transition-all duration-300"
+                  whileHover={{ rotate: 5, scale: hoverScale }}
                   transition={{ duration: 0.3 }}
                 >
                   <img
                     src={icon}
                     alt={`${title} service`}
-                    className="w-10 h-10 sm:w-12 sm:h-12 object-contain transition-all duration-300"
+                    className="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 object-contain transition-all duration-300"
                     loading="lazy"
                   />
                 </motion.div>
@@ -81,15 +91,15 @@ const UnifiedCard = memo(({
 
               {/* Title */}
               <motion.h3 
-                className="text-white font-bold text-xl sm:text-2xl text-center leading-tight mb-4 group-hover:text-gray-100 transition-colors duration-300"
-                whileHover={{ scale: 1.02 }}
+                className="text-white font-bold text-lg xs:text-xl sm:text-2xl text-center leading-tight mb-3 xs:mb-4 group-hover:text-gray-100 transition-colors duration-300"
+                whileHover={{ scale: hoverScale }}
                 transition={{ duration: 0.2 }}
               >
                 {title}
               </motion.h3>
 
               {/* Accent line */}
-              <div className="w-16 h-px bg-white/40 group-hover:w-24 group-hover:bg-white/60 transition-all duration-300"></div>
+              <div className="w-12 xs:w-16 h-px bg-white/40 group-hover:w-20 xs:group-hover:w-24 group-hover:bg-white/60 transition-all duration-300"></div>
 
               {/* Corner accents */}
               <div className={`absolute top-4 right-4 w-8 h-8 ${styles.cornerAccent} border-t border-r`}></div>
@@ -102,7 +112,7 @@ const UnifiedCard = memo(({
         return (
           <div className={`${styles.card} h-full flex flex-col overflow-hidden`}>
             {/* Image Container */}
-            <div className="relative w-full h-48 sm:h-52 md:h-60 overflow-hidden rounded-t-2xl flex-shrink-0">
+            <div className="relative w-full h-36 xs:h-40 sm:h-48 md:h-52 lg:h-60 overflow-hidden rounded-t-2xl flex-shrink-0">
               <img
                 src={image}
                 alt={`${title} project`}
@@ -114,12 +124,12 @@ const UnifiedCard = memo(({
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
               {/* GitHub button */}
-              <div className="absolute top-3 right-3">
+              <div className="absolute top-2 right-2 xs:top-3 xs:right-3">
                 <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: buttonScale }}
+                  whileTap={{ scale: 0.9 }}
                   onClick={handleGithubClick}
-                  className="bg-black/80 backdrop-blur-sm w-10 h-10 sm:w-12 sm:h-12 rounded-full flex justify-center items-center cursor-pointer shadow-lg hover:shadow-white/20 transition-all duration-300 border border-white/20"
+                  className="bg-black/80 backdrop-blur-sm w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full flex justify-center items-center cursor-pointer shadow-lg hover:shadow-white/20 transition-all duration-300 border border-white/20 touch-manipulation"
                   aria-label={`View ${title} source code`}
                 >
                   <img
@@ -131,8 +141,8 @@ const UnifiedCard = memo(({
               </div>
 
               {/* Project index */}
-              <div className="absolute top-3 left-3">
-                <div className="relative bg-white/10 backdrop-blur-xl rounded-full border border-white/20 px-2 py-1">
+              <div className="absolute top-2 left-2 xs:top-3 xs:left-3">
+                <div className="relative bg-white/10 backdrop-blur-xl rounded-full border border-white/20 px-1.5 py-0.5 xs:px-2 xs:py-1">
                   <span className="text-white text-xs font-medium">
                     0{index + 1}
                   </span>
@@ -144,8 +154,8 @@ const UnifiedCard = memo(({
             <div className={`${styles.cardContent} flex-1 flex flex-col`}>
               {/* Title */}
               <motion.h3 
-                className="text-white font-bold text-xl sm:text-2xl mb-4 group-hover:text-gray-100 transition-colors duration-300"
-                whileHover={{ scale: 1.02 }}
+                className="text-white font-bold text-lg xs:text-xl sm:text-2xl mb-3 xs:mb-4 group-hover:text-gray-100 transition-colors duration-300"
+                whileHover={{ scale: hoverScale }}
                 transition={{ duration: 0.2 }}
               >
                 {title}
@@ -154,7 +164,7 @@ const UnifiedCard = memo(({
               {/* Points */}
               {points.length > 0 && (
                 <motion.ul 
-                  className="space-y-2 sm:space-y-3 mb-6 flex-1"
+                  className="space-y-1.5 xs:space-y-2 sm:space-y-3 mb-4 xs:mb-6 flex-1"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ delay: 0.2, duration: 0.6 }}
@@ -162,14 +172,14 @@ const UnifiedCard = memo(({
                   {points.slice(0, 3).map((point, pointIndex) => (
                     <motion.li
                       key={`point-${pointIndex}`}
-                      className="text-gray-300 text-sm sm:text-base leading-relaxed flex items-start gap-3 group/item"
+                      className="text-gray-300 text-xs xs:text-sm sm:text-base leading-relaxed flex items-start gap-2 xs:gap-3 group/item"
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.1 * pointIndex, duration: 0.5 }}
                     >
-                      <div className="relative mt-2 flex-shrink-0">
-                        <div className="w-2 h-2 bg-white rounded-full shadow-lg group-hover/item:scale-125 transition-transform duration-300" />
-                        <div className="absolute inset-0 w-2 h-2 bg-white/50 rounded-full animate-ping opacity-40" />
+                      <div className="relative mt-1 xs:mt-1.5 sm:mt-2 flex-shrink-0">
+                        <div className="w-1.5 h-1.5 xs:w-2 xs:h-2 bg-white rounded-full shadow-lg group-hover/item:scale-125 transition-transform duration-300" />
+                        <div className="absolute inset-0 w-1.5 h-1.5 xs:w-2 xs:h-2 bg-white/50 rounded-full animate-ping opacity-40" />
                       </div>
                       <span className="group-hover/item:text-white transition-colors duration-300">
                         {point}
@@ -181,11 +191,11 @@ const UnifiedCard = memo(({
 
               {/* Tags */}
               {tags.length > 0 && (
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-1.5 xs:gap-2 mb-3 xs:mb-4">
                   {tags.map((tag, tagIndex) => (
                     <motion.span
                       key={`tag-${tagIndex}`}
-                      className={`px-3 py-1 text-xs sm:text-sm font-medium rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white transition-all duration-300 hover:bg-white/20`}
+                      className={`px-2 py-1 xs:px-3 xs:py-1 text-xs font-medium rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white transition-all duration-300 hover:bg-white/20`}
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.1 * tagIndex + 0.3, duration: 0.4 }}
@@ -207,7 +217,7 @@ const UnifiedCard = memo(({
         return (
           <div className={`${styles.card} h-full flex flex-col overflow-hidden`}>
             {/* Image Container */}
-            <div className="relative w-full h-48 sm:h-52 md:h-60 overflow-hidden rounded-t-2xl flex-shrink-0">
+            <div className="relative w-full h-36 xs:h-40 sm:h-48 md:h-52 lg:h-60 overflow-hidden rounded-t-2xl flex-shrink-0">
               <img
                 src={image}
                 alt={`${title} project`}
@@ -219,13 +229,13 @@ const UnifiedCard = memo(({
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
               {/* Action buttons */}
-              <div className="absolute top-3 right-3 flex gap-2">
+              <div className="absolute top-2 right-2 xs:top-3 xs:right-3 flex gap-1.5 xs:gap-2">
                 {source_code_link && (
                   <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileHover={{ scale: buttonScale }}
+                    whileTap={{ scale: 0.9 }}
                     onClick={handleGithubClick}
-                    className="bg-black/80 backdrop-blur-sm w-10 h-10 sm:w-12 sm:h-12 rounded-full flex justify-center items-center cursor-pointer shadow-lg hover:shadow-white/20 transition-all duration-300 border border-white/20"
+                    className="bg-black/80 backdrop-blur-sm w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full flex justify-center items-center cursor-pointer shadow-lg hover:shadow-white/20 transition-all duration-300 border border-white/20 touch-manipulation"
                     aria-label={`View ${title} source code`}
                   >
                     <img
@@ -237,10 +247,10 @@ const UnifiedCard = memo(({
                 )}
                 {webpage && (
                   <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileHover={{ scale: buttonScale }}
+                    whileTap={{ scale: 0.9 }}
                     onClick={handleWebpageClick}
-                    className="bg-black/80 backdrop-blur-sm w-10 h-10 sm:w-12 sm:h-12 rounded-full flex justify-center items-center cursor-pointer shadow-lg hover:shadow-white/20 transition-all duration-300 border border-white/20"
+                    className="bg-black/80 backdrop-blur-sm w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full flex justify-center items-center cursor-pointer shadow-lg hover:shadow-white/20 transition-all duration-300 border border-white/20 touch-manipulation"
                     aria-label={`Visit ${title} website`}
                   >
                     <img
@@ -253,8 +263,8 @@ const UnifiedCard = memo(({
               </div>
 
               {/* Project index */}
-              <div className="absolute top-3 left-3">
-                <div className="relative bg-white/10 backdrop-blur-xl rounded-full border border-white/20 px-2 py-1">
+              <div className="absolute top-2 left-2 xs:top-3 xs:left-3">
+                <div className="relative bg-white/10 backdrop-blur-xl rounded-full border border-white/20 px-1.5 py-0.5 xs:px-2 xs:py-1">
                   <span className="text-white text-xs font-medium">
                     0{index + 1}
                   </span>
@@ -266,8 +276,8 @@ const UnifiedCard = memo(({
             <div className={`${styles.cardContent} flex-1 flex flex-col`}>
               {/* Title */}
               <motion.h3 
-                className="text-white font-bold text-xl sm:text-2xl mb-4 group-hover:text-gray-100 transition-colors duration-300"
-                whileHover={{ scale: 1.02 }}
+                className="text-white font-bold text-lg xs:text-xl sm:text-2xl mb-3 xs:mb-4 group-hover:text-gray-100 transition-colors duration-300"
+                whileHover={{ scale: hoverScale }}
                 transition={{ duration: 0.2 }}
               >
                 {title}
@@ -276,7 +286,7 @@ const UnifiedCard = memo(({
               {/* Points */}
               {points.length > 0 && (
                 <motion.ul 
-                  className="space-y-2 sm:space-y-3 mb-6 flex-1"
+                  className="space-y-1.5 xs:space-y-2 sm:space-y-3 mb-4 xs:mb-6 flex-1"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ delay: 0.2, duration: 0.6 }}
@@ -284,14 +294,14 @@ const UnifiedCard = memo(({
                   {points.slice(0, 3).map((point, pointIndex) => (
                     <motion.li
                       key={`point-${pointIndex}`}
-                      className="text-gray-300 text-sm sm:text-base leading-relaxed flex items-start gap-3 group/item"
+                      className="text-gray-300 text-xs xs:text-sm sm:text-base leading-relaxed flex items-start gap-2 xs:gap-3 group/item"
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.1 * pointIndex, duration: 0.5 }}
                     >
-                      <div className="relative mt-2 flex-shrink-0">
-                        <div className="w-2 h-2 bg-white rounded-full shadow-lg group-hover/item:scale-125 transition-transform duration-300" />
-                        <div className="absolute inset-0 w-2 h-2 bg-white/50 rounded-full animate-ping opacity-40" />
+                      <div className="relative mt-1 xs:mt-1.5 sm:mt-2 flex-shrink-0">
+                        <div className="w-1.5 h-1.5 xs:w-2 xs:h-2 bg-white rounded-full shadow-lg group-hover/item:scale-125 transition-transform duration-300" />
+                        <div className="absolute inset-0 w-1.5 h-1.5 xs:w-2 xs:h-2 bg-white/50 rounded-full animate-ping opacity-40" />
                       </div>
                       <span className="group-hover/item:text-white transition-colors duration-300">
                         {point}
@@ -303,11 +313,11 @@ const UnifiedCard = memo(({
 
               {/* Tags */}
               {tags.length > 0 && (
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-1.5 xs:gap-2 mb-3 xs:mb-4">
                   {tags.map((tag, tagIndex) => (
                     <motion.span
                       key={`tag-${tagIndex}`}
-                      className={`px-3 py-1 text-xs sm:text-sm font-medium rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white transition-all duration-300 hover:bg-white/20`}
+                      className={`px-2 py-1 xs:px-3 xs:py-1 text-xs font-medium rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white transition-all duration-300 hover:bg-white/20`}
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.1 * tagIndex + 0.3, duration: 0.4 }}
@@ -334,7 +344,7 @@ const UnifiedCard = memo(({
     <motion.div
       variants={cardVariants}
       className={`w-full max-w-[400px] mx-auto group ${className}`}
-      whileHover={{ y: -10 }}
+      whileHover={{ y: hoverY }}
       transition={{ duration: 0.3 }}
       {...props}
     >
