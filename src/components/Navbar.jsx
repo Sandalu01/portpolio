@@ -77,7 +77,7 @@ const Navbar = () => {
           <div
             className={`${
               !toggle ? "hidden" : "flex"
-            } ${styles.liquidGlassCard} absolute top-20 right-0 mx-4 my-2 min-w-[180px] z-10 p-6`}
+            } ${styles.liquidGlassCard} absolute top-20 right-0 mx-4 my-2 min-w-[180px] z-10 p-6 backdrop-blur-[40px] bg-white/20`}
           >
             <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
               {navLinks.map((nav) => (
