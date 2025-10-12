@@ -25,9 +25,9 @@ const Hero = () => {
       <div className={`absolute bottom-32 right-16 w-48 h-48 ${styles.backgroundOrb} bg-white/5`} />
 
       {/* Main content */}
-      <div className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5 ${styles.contentContainer}`}>
+      <div className={`absolute inset-0 top-[80px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5 ${styles.contentContainer}`}>
         {/* Vertical indicator line */}
-        <div className='flex flex-col justify-center items-center mt-5'>
+        <div className='flex flex-col justify-center items-center mt-2'>
           <div className={`w-5 h-5 rounded-full ${styles.liquidGlassCard}`} />
           <div className={`w-1 sm:h-80 h-40 ${styles.liquidGlassCard}`} />
         </div>
@@ -39,7 +39,7 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className={`${styles.liquidGlassCard} p-6 sm:p-8 lg:p-10`}
         >
-          <h1 className={`font-black text-white lg:text-[50px] sm:text-[40px] xs:text-[30px] text-[25px] lg:leading-[60px] mt-2`}>
+          <h1 className={`font-black text-white lg:text-[50px] sm:text-[40px] xs:text-[30px] text-[25px] lg:leading-[60px]`}>
             Hi, I'm <span className='text-white font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent'>Sandalu</span>
           </h1>
           <p className={`text-gray-300 font-medium lg:text-[18px] sm:text-[16px] xs:text-[14px] text-[12px] lg:leading-[26px] mt-4 leading-relaxed`}>
