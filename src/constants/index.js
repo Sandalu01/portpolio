@@ -108,7 +108,7 @@ const technologies = [
 export const education = [
   {
     date: "2018-2020",
-    degree: "A/L Engineering Technology Steam",
+    degree: "A/L Engineering Technology Stream",
     institution_name: "A/Thalawa National School",
     icon: TMV,
     iconBg: "#ffffff",
