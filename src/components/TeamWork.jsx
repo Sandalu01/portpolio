@@ -95,7 +95,7 @@ const TeamWork = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             {teamworks.map((teamwork, index) => (
               <motion.div
                 key={`teamwork-${index}`}

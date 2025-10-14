@@ -65,7 +65,7 @@ const UnifiedCard = memo(({
         return (
           <div className={`${styles.appleGlassStrong} h-full min-h-[280px] sm:min-h-[320px] lg:min-h-[340px] transition-all duration-500 group cursor-pointer`}>
             {/* Content container */}
-            <div className="relative p-6 xs:p-8 h-full flex flex-col justify-center items-center text-center">
+            <div className="relative p-4 xs:p-6 sm:p-8 h-full flex flex-col justify-center items-center text-center">
               {/* Number badge */}
               <div className="absolute top-4 right-4 xs:top-6 xs:right-6">
                 <div className={`${styles.appleGlass} relative w-8 h-8 xs:w-10 xs:h-10 flex items-center justify-center font-bold text-sm xs:text-base ${styles.appleShadowMedium} transition-all duration-300`}>
@@ -112,7 +112,7 @@ const UnifiedCard = memo(({
         return (
           <div className={`${styles.appleGlassStrong} h-full flex flex-col overflow-hidden group cursor-pointer ${styles.appleShadowLarge}`}>
             {/* Image Container */}
-            <div className="relative w-full h-48 sm:h-52 md:h-56 lg:h-60 xl:h-64 overflow-hidden rounded-t-3xl flex-shrink-0">
+            <div className="relative w-full h-44 xs:h-48 sm:h-52 md:h-56 lg:h-60 xl:h-64 overflow-hidden rounded-t-2xl sm:rounded-t-3xl flex-shrink-0">
               <img
                 src={image}
                 alt={`${title} project`}
@@ -129,7 +129,7 @@ const UnifiedCard = memo(({
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={handleGithubClick}
-                  className={`${styles.appleGlass} w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-2xl flex justify-center items-center cursor-pointer transition-all duration-300 ${styles.appleShadowMedium} touch-manipulation`}
+                  className={`${styles.appleGlass} w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 lg:w-18 lg:h-18 rounded-2xl flex justify-center items-center cursor-pointer transition-all duration-300 ${styles.appleShadowMedium} touch-manipulation`}
                   aria-label={`View ${title} source code`}
                 >
                   <img
@@ -151,7 +151,7 @@ const UnifiedCard = memo(({
             </div>
 
             {/* Content section */}
-            <div className="relative p-5 xs:p-6 sm:p-7 flex-1 flex flex-col z-20">
+            <div className="relative p-4 xs:p-5 sm:p-6 lg:p-7 flex-1 flex flex-col z-20">
               {/* Title */}
               <motion.h3 
                 className="text-white apple-title-large mb-4 xs:mb-5 group-hover:text-gray-100 transition-colors duration-300"

@@ -1,5 +1,60 @@
 /* Mobile-first responsive optimizations for Card sections */
 
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575px) {
+  /* Grid optimizations for very small screens */
+  .grid {
+    gap: 1rem;
+  }
+  
+  /* Card padding for small screens */
+  .apple-glass-strong {
+    padding: 0.75rem;
+  }
+  
+  /* Typography adjustments */
+  .apple-title-large {
+    font-size: 1.125rem;
+    line-height: 1.4;
+  }
+  
+  .apple-body-medium {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+  
+  /* Button sizes for touch */
+  button {
+    min-height: 48px;
+    min-width: 48px;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767px) {
+  .grid {
+    gap: 1.25rem;
+  }
+  
+  .apple-glass-strong {
+    padding: 1rem;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .grid {
+    gap: 1.5rem;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .grid {
+    gap: 2rem;
+  }
+}
+
 /* Custom breakpoints for better mobile experience */
 @media (max-width: 475px) {
   .xs\:text-xs { font-size: 0.75rem; }
@@ -115,23 +170,15 @@
     -webkit-overflow-scrolling: touch;
   }
   
-  /* Better grid spacing on very small screens */
-  .grid {
-    gap: 1.5rem;
+  /* Smooth transitions for mobile */
+  .apple-glass-strong,
+  .apple-glass {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
-  /* Optimize card spacing for mobile */
-  .grid.grid-cols-1 {
-    gap: 1.5rem;
-  }
-  
-  .grid.grid-cols-1.sm\\:grid-cols-2 {
-    gap: 1.5rem;
-  }
-  
-  /* Card padding optimization for mobile */
-  .apple-glass-strong {
-    padding: 1rem;
+  /* Optimize hover effects for mobile */
+  .group:hover .group-hover\\:scale-110 {
+    transform: scale(1.02);
   }
 }
 

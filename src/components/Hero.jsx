@@ -21,15 +21,15 @@ const Hero = () => {
         />
       </div>
       
-      <div className={`absolute top-20 left-20 w-64 h-64 ${styles.backgroundOrb} bg-white/5`} />
-      <div className={`absolute bottom-32 right-16 w-48 h-48 ${styles.backgroundOrb} bg-white/5`} />
+      <div className={`absolute top-10 left-4 sm:top-20 sm:left-20 w-32 h-32 sm:w-64 sm:h-64 ${styles.backgroundOrb} bg-white/5`} />
+      <div className={`absolute bottom-20 right-4 sm:bottom-32 sm:right-16 w-24 h-24 sm:w-48 sm:h-48 ${styles.backgroundOrb} bg-white/5`} />
 
       {/* Main content */}
-      <div className={`absolute inset-0 top-[80px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5 ${styles.contentContainer}`}>
+      <div className={`absolute inset-0 top-[60px] sm:top-[80px] max-w-7xl mx-auto ${styles.paddingX} flex flex-col sm:flex-row items-start gap-4 sm:gap-5 ${styles.contentContainer}`}>
         {/* Vertical indicator line */}
-        <div className='flex flex-col justify-center items-center mt-2'>
-          <div className={`w-5 h-5 rounded-full ${styles.liquidGlassCard}`} />
-          <div className={`w-1 sm:h-80 h-40 ${styles.liquidGlassCard}`} />
+        <div className='flex flex-row sm:flex-col justify-center items-center mt-2 mb-4 sm:mb-0'>
+          <div className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full ${styles.liquidGlassCard}`} />
+          <div className={`w-20 h-1 sm:w-1 sm:h-80 ${styles.liquidGlassCard}`} />
         </div>
 
         {/* Hero content */}
@@ -47,7 +47,7 @@ const Hero = () => {
             I specialize in frontend development using React, creating interactive and user-friendly interfaces, 
             and backend development with Node.js and Express.js for building scalable, reliable server-side solutions.
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-4">
+          <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
             <motion.a
               href="#project"
               whileHover={{ scale: 1.05 }}
