@@ -90,14 +90,24 @@ const TeamWork = () => {
 
         {/* Teamwork projects grid */}
         <motion.div 
-          className="mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 relative z-10"
+          className="mt-12 sm:mt-16 relative z-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          {teamworks.map((teamwork, index) => (
-            <TeamworkCard key={`teamwork-${index}`} index={index} {...teamwork} />
-          ))}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 max-w-6xl mx-auto">
+            {teamworks.map((teamwork, index) => (
+              <motion.div
+                key={`teamwork-${index}`}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2, duration: 0.6 }}
+                className="w-full"
+              >
+                <TeamworkCard index={index} {...teamwork} />
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Bottom separator */}

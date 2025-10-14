@@ -37,23 +37,73 @@ const Hero = () => {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className={`${styles.liquidGlassCard} p-6 sm:p-8 lg:p-10`}
+          className={`${styles.appleGlassStrong} p-6 sm:p-8 lg:p-10 ${styles.appleSpring}`}
         >
-          <h1 className={`font-black text-white lg:text-[50px] sm:text-[40px] xs:text-[30px] text-[25px] lg:leading-[60px]`}>
-            Hi, I'm <span className='text-white font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent'>Sandalu</span>
+          <h1 className={`${styles.heroHeadText}`}>
+            Hi, I'm <span className={`${styles.appleTextGradientBlue}`}>Sandalu</span>
           </h1>
-          <p className={`text-gray-300 font-medium lg:text-[18px] sm:text-[16px] xs:text-[14px] text-[12px] lg:leading-[26px] mt-4 leading-relaxed`}>
+          <p className={`${styles.heroSubText} mt-6`}>
             I am a passionate developer with a focus on building efficient web applications. 
             I specialize in frontend development using React, creating interactive and user-friendly interfaces, 
             and backend development with Node.js and Express.js for building scalable, reliable server-side solutions.
           </p>
+          <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <motion.a
+              href="#project"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={`${styles.primaryButton} ${styles.appleGradientBlue} no-underline`}
+              onClick={(e) => {
+                e.preventDefault();
+                const element = document.getElementById('project');
+                if (element) {
+                  element.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }
+              }}
+            >
+              View My Work
+            </motion.a>
+            <motion.a
+              href="#contact"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={`${styles.secondaryButton} no-underline`}
+              onClick={(e) => {
+                e.preventDefault();
+                const element = document.getElementById('contact');
+                if (element) {
+                  element.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }
+              }}
+            >
+              Get In Touch
+            </motion.a>
+          </div>
         </motion.div>
       </div>
 
       {/* Scroll indicator */}
       <div className='absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center'>
-        <a href='#about'>
-          <div className={`w-[35px] h-[64px] ${styles.liquidGlassCard} flex justify-center items-start p-2`}>
+        <a 
+          href='#about'
+          onClick={(e) => {
+            e.preventDefault();
+            const element = document.getElementById('about');
+            if (element) {
+              element.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          }}
+        >
+          <div className={`w-[35px] h-[64px] ${styles.appleGlass} flex justify-center items-start p-2 ${styles.appleShadowMedium}`}>
             <motion.div
               animate={{
                 y: [0, 24, 0],
@@ -63,7 +113,7 @@ const Hero = () => {
                 repeat: Infinity,
                 repeatType: "loop",
               }}
-              className={`w-3 h-3 rounded-full ${styles.liquidGlassCard}`}
+              className={`w-3 h-3 rounded-full ${styles.appleGradientBlue}`}
             />
           </div>
         </a>

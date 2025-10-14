@@ -1,8 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+/* SF Pro Fonts - Apple's Official Typeface */
 /* Import modern liquid glass design system */
 @import './styles/liquid-glass.css';
 /* Import mobile optimizations */
 @import './styles/mobile.css';
+/* Import Apple-style design system */
+@import './styles/apple-design.css';
 
 @tailwind base;
 @tailwind components;
@@ -12,7 +14,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: 'SF Pro Display', 'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   scroll-behavior: smooth;
   color-scheme: rgb(23, 5, 99);
 }

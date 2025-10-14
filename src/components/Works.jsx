@@ -89,14 +89,24 @@ const Works = () => {
 
         {/* Projects grid */}
         <motion.div 
-          className="mt-8 sm:mt-12 lg:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 relative z-10"
+          className="mt-8 sm:mt-12 lg:mt-16 relative z-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          {projects.map((project, index) => (
-            <ProjectCard key={`project-${index}`} index={index} {...project} />
-          ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 max-w-7xl mx-auto">
+            {projects.map((project, index) => (
+              <motion.div
+                key={`project-${index}`}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                className="w-full"
+              >
+                <ProjectCard index={index} {...project} />
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Bottom separator */}

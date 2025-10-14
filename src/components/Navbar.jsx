@@ -53,9 +53,22 @@ const Navbar = () => {
               } hover:text-white text-[18px] font-medium cursor-pointer transition-colors duration-300`}
               onClick={() => setActive(nav.title)}
             >
-              <a href={`#${nav.id}`} className={`px-4 py-2 rounded-lg transition-all duration-300 ${
-                active === nav.title ? styles.liquidGlassCard : "hover:bg-white/5"
-              }`}>
+              <a 
+                href={`#${nav.id}`} 
+                className={`px-4 py-2 rounded-lg transition-all duration-300 ${
+                  active === nav.title ? styles.liquidGlassCard : "hover:bg-white/5"
+                }`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  const element = document.getElementById(nav.id);
+                  if (element) {
+                    element.scrollIntoView({ 
+                      behavior: 'smooth',
+                      block: 'start'
+                    });
+                  }
+                }}
+              >
                 {nav.title}
               </a>
             </li>
@@ -91,9 +104,22 @@ const Navbar = () => {
                     setActive(nav.title);
                   }}
                 >
-                  <a href={`#${nav.id}`} className={`block px-4 py-2 rounded-lg transition-all duration-300 ${
-                    active === nav.title ? styles.liquidGlassCard : "hover:bg-white/5"
-                  }`}>
+                  <a 
+                    href={`#${nav.id}`} 
+                    className={`block px-4 py-2 rounded-lg transition-all duration-300 ${
+                      active === nav.title ? styles.liquidGlassCard : "hover:bg-white/5"
+                    }`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const element = document.getElementById(nav.id);
+                      if (element) {
+                        element.scrollIntoView({ 
+                          behavior: 'smooth',
+                          block: 'start'
+                        });
+                      }
+                    }}
+                  >
                     {nav.title}
                   </a>
                 </li>

@@ -43,10 +43,10 @@ const About = () => {
         
         {/* Header section */}
         <motion.div variants={textVariant()} className={styles.contentContainer}>
-          <p className={`${styles.sectionSubText} text-center`}>
+          <p className={`${styles.sectionSubText} text-center ${styles.appleFadeInUp}`}>
             Introduction
           </p>
-          <h2 className={`${styles.sectionHeadText} text-center mb-8`}>
+          <h2 className={`${styles.sectionHeadText} text-center mb-8 ${styles.appleSlideInRight}`}>
             Overview
             <span className="text-gray-400">.</span>
           </h2>
@@ -85,14 +85,24 @@ const About = () => {
 
         {/* Services grid */}
         <motion.div 
-          className="mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 relative z-10"
+          className="mt-12 sm:mt-16 relative z-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          {services.map((service, index) => (
-            <ServiceCard key={`service-${index}`} index={index} {...service} />
-          ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 max-w-7xl mx-auto">
+            {services.map((service, index) => (
+              <motion.div
+                key={`service-${index}`}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                className="w-full"
+              >
+                <ServiceCard index={index} {...service} />
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Bottom separator */}

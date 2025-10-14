@@ -1,4 +1,4 @@
-/* Mobile-first responsive optimizations for Projects section */
+/* Mobile-first responsive optimizations for Card sections */
 
 /* Custom breakpoints for better mobile experience */
 @media (max-width: 475px) {
@@ -117,7 +117,21 @@
   
   /* Better grid spacing on very small screens */
   .grid {
-    gap: 1rem;
+    gap: 1.5rem;
+  }
+  
+  /* Optimize card spacing for mobile */
+  .grid.grid-cols-1 {
+    gap: 1.5rem;
+  }
+  
+  .grid.grid-cols-1.sm\\:grid-cols-2 {
+    gap: 1.5rem;
+  }
+  
+  /* Card padding optimization for mobile */
+  .apple-glass-strong {
+    padding: 1rem;
   }
 }
 

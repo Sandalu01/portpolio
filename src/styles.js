@@ -5,29 +5,29 @@ const styles = {
   padding: "px-4 py-6 sm:px-6 sm:py-10 lg:px-16 lg:py-16",
   sectionPadding: "px-3 sm:px-4 md:px-6 lg:px-8",
 
-  // Typography - Hero section
+  // Typography - Hero section (Apple-style)
   heroHeadText:
-    "font-black text-white lg:text-[80px] sm:text-[60px] xs:text-[50px] text-[40px] lg:leading-[98px] mt-2",
+    "apple-display-large text-white mt-2",
   heroSubText:
-    "text-gray-300 font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px]",
+    "apple-body-large text-gray-300",
 
-  // Typography - Section headers - mobile optimized
+  // Typography - Section headers (Apple-style)
   sectionHeadText:
-    "text-white font-black text-[28px] xs:text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px] tracking-tight",
+    "apple-display-medium text-white",
   sectionSubText:
-    "text-[12px] xs:text-[14px] sm:text-[16px] lg:text-[18px] text-gray-300 uppercase tracking-wider font-medium",
+    "apple-label-large text-gray-300 uppercase tracking-wider",
 
   // Consistent container styles
   container: "relative overflow-hidden bg-black/5",
   contentContainer: "relative z-10",
   
-  // Modern Liquid Glass Card styles
-  card: "liquid-glass-card",
+  // Apple-style Card styles
+  card: "apple-card",
   cardContent: "relative z-10 p-4 xs:p-5 sm:p-6 lg:p-8",
   
-  // Modern Liquid Glass Button styles
-  primaryButton: "liquid-glass-button relative group w-fit overflow-hidden text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 hover:text-gray-100 active:text-gray-200",
-  secondaryButton: "liquid-glass-button relative group w-fit overflow-hidden text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:text-gray-100",
+  // Apple-style Button styles
+  primaryButton: "apple-button-primary relative group w-fit overflow-hidden",
+  secondaryButton: "apple-button-secondary relative group w-fit overflow-hidden",
   
   // Background elements - modernized
   backgroundGrid: "absolute inset-0 opacity-[0.02] pointer-events-none",
@@ -73,6 +73,32 @@ const styles = {
   modernRadiusSmall: "rounded-2xl",
   modernRadiusButton: "rounded-xl",
   modernRadiusTag: "rounded-lg",
+  
+  // Apple-style utility classes
+  appleGlass: "apple-glass",
+  appleGlassStrong: "apple-glass-strong",
+  appleSpring: "apple-spring",
+  appleFadeInUp: "apple-fade-in-up",
+  appleSlideInRight: "apple-slide-in-right",
+  applePulse: "apple-pulse",
+  
+  // Apple-style gradients
+  appleGradientBlue: "apple-gradient-blue",
+  appleGradientPurple: "apple-gradient-purple",
+  appleGradientGreen: "apple-gradient-green",
+  appleGradientOrange: "apple-gradient-orange",
+  appleGradientRed: "apple-gradient-red",
+  
+  // Apple-style text gradients
+  appleTextGradientBlue: "apple-text-gradient-blue",
+  appleTextGradientPurple: "apple-text-gradient-purple",
+  appleTextGradientGreen: "apple-text-gradient-green",
+  
+  // Apple-style shadows
+  appleShadowSmall: "apple-shadow-small",
+  appleShadowMedium: "apple-shadow-medium",
+  appleShadowLarge: "apple-shadow-large",
+  appleShadowXl: "apple-shadow-xl",
 };
 
 export { styles };
