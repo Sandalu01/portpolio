@@ -32,10 +32,11 @@ const UnifiedCard = memo(({
   const tiltOptions = useMemo(() => {
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
     return {
-      max: isMobile ? 15 : 45,
-      scale: isMobile ? 1.02 : 1.05,
-      speed: 450,
+      max: isMobile ? 10 : 25,
+      scale: isMobile ? 1.01 : 1.03,
+      speed: 300,
       disable: isMobile,
+      perspective: 1000,
     };
   }, []);
 
@@ -54,9 +55,9 @@ const UnifiedCard = memo(({
 
   // Mobile-optimized hover effects
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-  const hoverY = isMobile ? 0 : -10;
-  const hoverScale = isMobile ? 1.01 : 1.02;
-  const buttonScale = isMobile ? 1.05 : 1.1;
+  const hoverY = isMobile ? -2 : -8;
+  const hoverScale = isMobile ? 1.005 : 1.015;
+  const buttonScale = isMobile ? 1.08 : 1.12;
 
   // Render different card types
   const renderCardContent = () => {
@@ -124,28 +125,32 @@ const UnifiedCard = memo(({
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               
               {/* GitHub button */}
-              <div className="absolute top-3 right-3 xs:top-4 xs:right-4">
+              <div className="absolute top-2 right-2 xs:top-3 xs:right-3 sm:top-4 sm:right-4">
                 <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: buttonScale }}
+                  whileTap={{ scale: 0.9 }}
                   onClick={handleGithubClick}
-                  className={`${styles.appleGlass} w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 lg:w-18 lg:h-18 rounded-2xl flex justify-center items-center cursor-pointer transition-all duration-300 ${styles.appleShadowMedium} touch-manipulation`}
+                  className={`${styles.appleGlass} w-11 h-11 xs:w-12 xs:h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-2xl flex justify-center items-center cursor-pointer transition-all duration-300 ${styles.appleShadowMedium} touch-manipulation min-h-[44px] min-w-[44px] group/btn hover:bg-white/15 hover:shadow-[0_8px_24px_rgba(255,255,255,0.15)]`}
                   aria-label={`View ${title} source code`}
                 >
                   <img
                     src={github}
                     alt=""
-                    className="w-1/2 h-1/2 object-contain filter brightness-0 invert relative z-10"
+                    className="w-1/2 h-1/2 object-contain filter brightness-0 invert relative z-10 transition-transform duration-300 group-hover/btn:scale-110"
                   />
+                  {/* Button glow effect */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 blur-sm"></div>
                 </motion.button>
               </div>
 
               {/* Project index */}
-              <div className="absolute top-3 left-3 xs:top-4 xs:left-4">
-                <div className={`${styles.appleGlass} relative px-3 py-1.5 xs:px-4 xs:py-2 rounded-2xl ${styles.appleShadowSmall}`}>
-                  <span className="text-white apple-label-medium relative z-10">
+              <div className="absolute top-2 left-2 xs:top-3 xs:left-3 sm:top-4 sm:left-4">
+                <div className={`${styles.appleGlass} relative px-2 py-1 xs:px-3 xs:py-1.5 sm:px-4 sm:py-2 rounded-2xl ${styles.appleShadowSmall} group/badge hover:bg-white/15 transition-all duration-300`}>
+                  <span className="text-white text-xs xs:text-sm sm:text-base font-medium relative z-10 group-hover/badge:text-gray-100 transition-colors duration-300">
                     0{index + 1}
                   </span>
+                  {/* Badge glow effect */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover/badge:opacity-100 transition-opacity duration-300 blur-sm"></div>
                 </div>
               </div>
             </div>
@@ -154,11 +159,13 @@ const UnifiedCard = memo(({
             <div className="relative p-4 xs:p-5 sm:p-6 lg:p-7 flex-1 flex flex-col z-20">
               {/* Title */}
               <motion.h3 
-                className="text-white apple-title-large mb-4 xs:mb-5 group-hover:text-gray-100 transition-colors duration-300"
-                whileHover={{ scale: 1.02 }}
+                className="text-white apple-title-large mb-4 xs:mb-5 group-hover:text-gray-100 transition-colors duration-300 relative"
+                whileHover={{ scale: 1.01 }}
                 transition={{ duration: 0.2 }}
               >
                 {title}
+                {/* Title underline effect */}
+                <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 group-hover:w-full transition-all duration-500 ease-out"></div>
               </motion.h3>
 
               {/* Points */}
@@ -195,20 +202,27 @@ const UnifiedCard = memo(({
                   {tags.map((tag, tagIndex) => (
                     <motion.span
                       key={`tag-${tagIndex}`}
-                      className={`${styles.appleGlass} px-3 py-1.5 xs:px-4 xs:py-2 apple-label-small text-white transition-all duration-300 ${styles.appleShadowSmall}`}
+                      className={`${styles.appleGlass} px-3 py-1.5 xs:px-4 xs:py-2 apple-label-small text-white transition-all duration-300 ${styles.appleShadowSmall} group/tag hover:bg-white/15 hover:scale-105 cursor-default`}
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.1 * tagIndex + 0.3, duration: 0.4 }}
+                      whileHover={{ scale: 1.05 }}
                     >
                       {tag.name}
+                      {/* Tag glow effect */}
+                      <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover/tag:opacity-100 transition-opacity duration-300 blur-sm"></div>
                     </motion.span>
                   ))}
                 </div>
               )}
 
               {/* Apple-style corner accents */}
-              <div className="absolute top-4 right-4 w-6 h-6 border-t border-r border-apple-blue/30 opacity-50 group-hover:opacity-80 transition-opacity duration-300"></div>
-              <div className="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-apple-blue/30 opacity-50 group-hover:opacity-80 transition-opacity duration-300"></div>
+              <div className="absolute top-4 right-4 w-6 h-6 border-t border-r border-gradient-to-br from-blue-500/40 to-purple-500/40 opacity-50 group-hover:opacity-80 transition-all duration-500 ease-out group-hover:scale-110"></div>
+              <div className="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-gradient-to-tl from-blue-500/40 to-purple-500/40 opacity-50 group-hover:opacity-80 transition-all duration-500 ease-out group-hover:scale-110"></div>
+              
+              {/* Subtle glow effects */}
+              <div className="absolute top-4 right-4 w-6 h-6 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-tl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute bottom-4 left-4 w-6 h-6 bg-gradient-to-tl from-blue-500/5 to-purple-500/5 rounded-br-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
           </div>
         );
@@ -235,14 +249,16 @@ const UnifiedCard = memo(({
                     whileHover={{ scale: buttonScale }}
                     whileTap={{ scale: 0.9 }}
                     onClick={handleGithubClick}
-                    className={`${styles.liquidGlassOverlay} w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-2xl flex justify-center items-center cursor-pointer transition-all duration-300 touch-manipulation`}
+                    className={`${styles.appleGlass} w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-2xl flex justify-center items-center cursor-pointer transition-all duration-300 touch-manipulation group/btn hover:bg-white/15 hover:shadow-[0_8px_24px_rgba(255,255,255,0.15)] ${styles.appleShadowMedium}`}
                     aria-label={`View ${title} source code`}
                   >
                     <img
                       src={github}
                       alt=""
-                      className="w-1/2 h-1/2 object-contain filter brightness-0 invert relative z-10"
+                      className="w-1/2 h-1/2 object-contain filter brightness-0 invert relative z-10 transition-transform duration-300 group-hover/btn:scale-110"
                     />
+                    {/* Button glow effect */}
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 blur-sm"></div>
                   </motion.button>
                 )}
                 {webpage && (
@@ -250,24 +266,28 @@ const UnifiedCard = memo(({
                     whileHover={{ scale: buttonScale }}
                     whileTap={{ scale: 0.9 }}
                     onClick={handleWebpageClick}
-                    className={`${styles.liquidGlassOverlay} w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-2xl flex justify-center items-center cursor-pointer transition-all duration-300 touch-manipulation`}
+                    className={`${styles.appleGlass} w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-2xl flex justify-center items-center cursor-pointer transition-all duration-300 touch-manipulation group/btn hover:bg-white/15 hover:shadow-[0_8px_24px_rgba(255,255,255,0.15)] ${styles.appleShadowMedium}`}
                     aria-label={`Visit ${title} website`}
                   >
                     <img
                       src={weblink}
                       alt=""
-                      className="w-1/2 h-1/2 object-contain filter brightness-0 invert relative z-10"
+                      className="w-1/2 h-1/2 object-contain filter brightness-0 invert relative z-10 transition-transform duration-300 group-hover/btn:scale-110"
                     />
+                    {/* Button glow effect */}
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-green-500/20 to-blue-500/20 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 blur-sm"></div>
                   </motion.button>
                 )}
               </div>
 
               {/* Project index */}
               <div className="absolute top-2 left-2 xs:top-3 xs:left-3">
-                <div className={`${styles.liquidGlassTag} relative px-1.5 py-0.5 xs:px-2 xs:py-1 rounded-xl`}>
-                  <span className="text-white text-xs font-medium relative z-10">
+                <div className={`${styles.appleGlass} relative px-1.5 py-0.5 xs:px-2 xs:py-1 rounded-xl ${styles.appleShadowSmall} group/badge hover:bg-white/15 transition-all duration-300`}>
+                  <span className="text-white text-xs font-medium relative z-10 group-hover/badge:text-gray-100 transition-colors duration-300">
                     0{index + 1}
                   </span>
+                  {/* Badge glow effect */}
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/10 to-white/5 opacity-0 group-hover/badge:opacity-100 transition-opacity duration-300 blur-sm"></div>
                 </div>
               </div>
             </div>
@@ -276,11 +296,13 @@ const UnifiedCard = memo(({
             <div className={`${styles.cardContent} flex-1 flex flex-col relative z-20`}>
               {/* Title */}
               <motion.h3 
-                className="text-white font-bold text-lg xs:text-xl sm:text-2xl mb-3 xs:mb-4 group-hover:text-gray-100 transition-colors duration-300"
+                className="text-white apple-title-large mb-3 xs:mb-4 group-hover:text-gray-100 transition-colors duration-300 relative"
                 whileHover={{ scale: hoverScale }}
                 transition={{ duration: 0.2 }}
               >
                 {title}
+                {/* Title underline effect */}
+                <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-green-500 to-blue-500 group-hover:w-full transition-all duration-500 ease-out"></div>
               </motion.h3>
 
               {/* Points */}
@@ -317,20 +339,27 @@ const UnifiedCard = memo(({
                   {tags.map((tag, tagIndex) => (
                     <motion.span
                       key={`tag-${tagIndex}`}
-                      className={`${styles.liquidGlassTag} px-2 py-1 xs:px-3 xs:py-1 text-xs font-medium text-white transition-all duration-300`}
+                      className={`${styles.appleGlass} px-2 py-1 xs:px-3 xs:py-1 apple-label-small text-white transition-all duration-300 ${styles.appleShadowSmall} group/tag hover:bg-white/15 hover:scale-105 cursor-default`}
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.1 * tagIndex + 0.3, duration: 0.4 }}
+                      whileHover={{ scale: 1.05 }}
                     >
                       {tag.name}
+                      {/* Tag glow effect */}
+                      <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-green-500/10 to-blue-500/10 opacity-0 group-hover/tag:opacity-100 transition-opacity duration-300 blur-sm"></div>
                     </motion.span>
                   ))}
                 </div>
               )}
 
-              {/* Modern liquid glass accents */}
-              <div className={`absolute top-4 right-4 w-8 h-8 ${styles.cornerAccent} border-t border-r opacity-30`}></div>
-              <div className={`absolute bottom-4 left-4 w-8 h-8 ${styles.cornerAccent} border-b border-l opacity-30`}></div>
+              {/* Apple-style corner accents */}
+              <div className="absolute top-4 right-4 w-8 h-8 border-t border-r border-gradient-to-br from-green-500/40 to-blue-500/40 opacity-30 group-hover:opacity-60 transition-all duration-500 ease-out group-hover:scale-110"></div>
+              <div className="absolute bottom-4 left-4 w-8 h-8 border-b border-l border-gradient-to-tl from-green-500/40 to-blue-500/40 opacity-30 group-hover:opacity-60 transition-all duration-500 ease-out group-hover:scale-110"></div>
+              
+              {/* Subtle glow effects */}
+              <div className="absolute top-4 right-4 w-8 h-8 bg-gradient-to-br from-green-500/5 to-blue-500/5 rounded-tl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute bottom-4 left-4 w-8 h-8 bg-gradient-to-tl from-green-500/5 to-blue-500/5 rounded-br-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
           </div>
         );
@@ -344,8 +373,13 @@ const UnifiedCard = memo(({
     <motion.div
       variants={cardVariants}
       className={`w-full group ${className}`}
-      whileHover={{ y: -8, scale: 1.02 }}
-      transition={{ duration: 0.4, type: "spring", stiffness: 300 }}
+      whileHover={{ y: hoverY, scale: hoverScale }}
+      transition={{ 
+        duration: isMobile ? 0.2 : 0.3, 
+        type: "spring", 
+        stiffness: isMobile ? 200 : 300,
+        damping: isMobile ? 20 : 25
+      }}
       {...props}
     >
       <div className="relative h-full">

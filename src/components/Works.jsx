@@ -89,18 +89,24 @@ const Works = () => {
 
         {/* Projects grid */}
         <motion.div 
-          className="mt-8 sm:mt-12 lg:mt-16 relative z-10"
+          className="mt-6 xs:mt-8 sm:mt-10 md:mt-12 lg:mt-16 relative z-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 xs:gap-4 sm:gap-5 md:gap-6 lg:gap-8 max-w-7xl mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8">
             {projects.map((project, index) => (
               <motion.div
                 key={`project-${index}`}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
+                transition={{ 
+                  delay: index * 0.08, 
+                  duration: 0.5,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15
+                }}
                 className="w-full"
               >
                 <ProjectCard index={index} {...project} />
@@ -110,13 +116,13 @@ const Works = () => {
         </motion.div>
 
         {/* Bottom separator */}
-        <div className="mt-8 sm:mt-12 lg:mt-16 w-full relative">
+        <div className="mt-6 xs:mt-8 sm:mt-10 md:mt-12 lg:mt-16 w-full relative">
           <div className={styles.accentLine} />
           <div className="mt-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
           <div className="mt-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
           
           {/* Center accent */}
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-lg" />
+          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 xs:w-3 h-2 xs:h-3 bg-white rounded-full shadow-lg" />
         </div>
       </div>
     </>
